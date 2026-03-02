@@ -20,6 +20,7 @@
       --accent:#38bdf8;
       --good:#22c55e;
       --warn:#f59e0b;
+      --bad:#fb7185;
       --shadow: 0 18px 60px rgba(0,0,0,.35);
       --r:16px;
     }
@@ -35,7 +36,9 @@
         linear-gradient(180deg, var(--bg), var(--bg2));
     }
     a{color:inherit}
+
     .wrap{max-width:1200px;margin:0 auto;padding:18px}
+
     .top{
       display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
       padding:14px 14px;
@@ -49,7 +52,7 @@
     .title p{margin:4px 0 0; color:var(--dim); font-size:13px}
 
     .controls{margin-top:12px; display:grid; gap:10px}
-    @media(min-width:900px){.controls{grid-template-columns: 1.6fr 1fr 1fr 1fr}}
+    @media(min-width:900px){.controls{grid-template-columns: 1.8fr 1fr 1fr 1fr}}
 
     .field{
       border:1px solid var(--border);
@@ -85,9 +88,17 @@
       background:rgba(255,255,255,.04);
       color:var(--dim);
       white-space:nowrap;
+      user-select:none;
     }
     .chip.good{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.10)}
     .chip.info{border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.10)}
+    .chip.btn{cursor:pointer}
+    .chip.btn:hover{background:rgba(255,255,255,.1)}
+    .chip.btn.active{border-color:rgba(245,158,11,.45); background:rgba(245,158,11,.16); color:#fff}
+
+    .layout-toggle{
+      display:flex; gap:6px; align-items:center;
+    }
 
     .grid{margin-top:14px; display:grid; gap:12px}
     @media(min-width:900px){.grid{grid-template-columns: repeat(2, minmax(0,1fr));}}
@@ -102,9 +113,11 @@
       min-width:0;
       transition: transform .15s ease, border-color .15s ease;
       cursor:pointer;
+      position:relative;
     }
     .card:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18)}
-    .card h3{margin:0 0 6px; font-size:16px; letter-spacing:-.01em}
+    .card.selected{border-color: rgba(56,189,248,.55); background:rgba(56,189,248,.06)}
+    .card h3{margin:0 0 6px; font-size:16px; letter-spacing:-.01em; padding-right:70px}
     .sub{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-bottom:8px}
     .sub span{padding:4px 8px;border:1px solid rgba(255,255,255,.10);border-radius:999px;background:rgba(0,0,0,.12)}
 
@@ -119,6 +132,24 @@
       min-height: 4.9em;
     }
 
+    .iconBtn{
+      position:absolute; top:10px; right:10px;
+      display:flex; gap:8px; align-items:center;
+    }
+    .pill{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      padding:6px 10px;
+      border-radius:999px;
+      cursor:pointer;
+      font-size:12px;
+      font-family:"Fira Code";
+    }
+    .pill:hover{border-color:rgba(255,255,255,.25)}
+    .pill.fav.on{border-color:rgba(245,158,11,.55); background:rgba(245,158,11,.18)}
+    .pill.cmp.on{border-color:rgba(56,189,248,.55); background:rgba(56,189,248,.14)}
+
     /* drawer */
     .drawer{
       position:fixed; inset:0;
@@ -130,7 +161,7 @@
     }
     .drawer.open{display:block}
     .panel{
-      max-width:900px;
+      max-width:980px;
       margin:0 auto;
       border:1px solid rgba(255,255,255,.16);
       background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
@@ -161,9 +192,18 @@
       min-width:0;
     }
     .box h4{margin:0 0 8px; font-size:12px; color:var(--muted); font-family:"Fira Code"; font-weight:600}
-    .box p, .box li{margin:0;color:var(--dim);font-size:13px;line-height:1.55; overflow-wrap:anywhere; word-break:break-word}
+    .box p, .box li{margin:0;color:var(--dim);font-size:13px;line-height:1.55; overflow-wrap:anywhere; word-break:break-word; white-space:pre-wrap}
     .box ul{margin:0;padding-left:18px}
     .mono{font-family:"Fira Code";font-size:12px;color:var(--dim)}
+
+    /* compare */
+    .compareWrap{padding:14px}
+    .compareGrid{display:grid; gap:12px}
+    @media(min-width:900px){.compareGrid{grid-template-columns: repeat(3, minmax(0,1fr));}}
+    .compareCard{border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.16); border-radius:16px; padding:12px}
+    .compareCard h3{margin:0 0 8px; font-size:14px}
+    .compareCard .k{color:var(--muted); font-family:"Fira Code"; font-size:11px; margin-top:10px}
+    .compareCard .v{color:var(--dim); font-size:12px; white-space:pre-wrap}
 
     .footer{margin-top:14px;color:var(--muted);font-size:12px}
   </style>
@@ -173,7 +213,7 @@
     <header class="top">
       <div class="title">
         <h1>Job Browser</h1>
-        <p>Filter + click a card to read full descriptions without suffering.</p>
+        <p>Roles = Excel sheet names • star favourites • compare side-by-side.</p>
       </div>
       <div class="chip info" id="fileChip">Loaded: jobs.json</div>
     </header>
@@ -181,7 +221,11 @@
     <section class="controls">
       <div class="field">
         <label>Search</label>
-        <input id="q" type="search" placeholder="role, project title, division, keywords..." />
+        <input id="q" type="search" placeholder="project title, keywords..." />
+      </div>
+      <div class="field">
+        <label>Role (sheet)</label>
+        <select id="role"><option value="">All</option></select>
       </div>
       <div class="field">
         <label>Division</label>
@@ -191,23 +235,22 @@
         <label>Level</label>
         <select id="level"><option value="">All</option></select>
       </div>
-      <div class="field">
-        <label>Work location</label>
-        <select id="location"><option value="">All</option></select>
-      </div>
     </section>
 
     <div class="meta">
       <span class="chip" id="count">0 jobs</span>
       <span class="chip good" id="shown">0 shown</span>
-      <span class="chip" id="hint">Tip: press <span class="mono">/</span> to focus search</span>
+      <span class="chip btn" id="chipFavs">★ Starred only</span>
+      <span class="chip btn" id="chipCompare">⇄ Compare (0)</span>
+      <span class="chip" id="hint">Tip: press <span class="mono">/</span> to search • <span class="mono">Esc</span> to close</span>
     </div>
 
     <section class="grid" id="grid"></section>
 
-    <div class="footer">Built by Pebble • local static HTML • no external tracking</div>
+    <div class="footer">Built by Pebble • static HTML • no tracking</div>
   </div>
 
+  <!-- detail drawer -->
   <div class="drawer" id="drawer" aria-hidden="true">
     <div class="panel" role="dialog" aria-modal="true">
       <div class="panelTop">
@@ -218,6 +261,10 @@
         <button class="btn" id="closeBtn">Close</button>
       </div>
       <div class="panelBody">
+        <div class="box">
+          <h4>Project Title</h4>
+          <p id="dProj"></p>
+        </div>
         <div class="box">
           <h4>Project Description</h4>
           <p id="dDesc"></p>
@@ -230,38 +277,74 @@
           <h4>Prerequisites</h4>
           <p id="dPre"></p>
         </div>
-        <div class="box">
-          <h4>Other</h4>
-          <ul id="dOther"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- compare drawer -->
+  <div class="drawer" id="cmpDrawer" aria-hidden="true">
+    <div class="panel" role="dialog" aria-modal="true">
+      <div class="panelTop">
+        <div>
+          <h2>Compare</h2>
+          <div class="mono" id="cmpMeta">Pick up to 3 cards</div>
         </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn" id="cmpClear">Clear</button>
+          <button class="btn" id="cmpClose">Close</button>
+        </div>
+      </div>
+      <div class="compareWrap">
+        <div class="compareGrid" id="cmpGrid"></div>
       </div>
     </div>
   </div>
 
   <script>
     const DATA_URL = './jobs.json';
+
     const els = {
       q: document.getElementById('q'),
+      role: document.getElementById('role'),
       division: document.getElementById('division'),
       level: document.getElementById('level'),
-      location: document.getElementById('location'),
       grid: document.getElementById('grid'),
       count: document.getElementById('count'),
       shown: document.getElementById('shown'),
+      chipFavs: document.getElementById('chipFavs'),
+      chipCompare: document.getElementById('chipCompare'),
+
       drawer: document.getElementById('drawer'),
       closeBtn: document.getElementById('closeBtn'),
       dTitle: document.getElementById('dTitle'),
       dSub: document.getElementById('dSub'),
+      dProj: document.getElementById('dProj'),
       dDesc: document.getElementById('dDesc'),
       dLearn: document.getElementById('dLearn'),
       dPre: document.getElementById('dPre'),
-      dOther: document.getElementById('dOther'),
+
+      cmpDrawer: document.getElementById('cmpDrawer'),
+      cmpClose: document.getElementById('cmpClose'),
+      cmpClear: document.getElementById('cmpClear'),
+      cmpGrid: document.getElementById('cmpGrid'),
+      cmpMeta: document.getElementById('cmpMeta'),
     };
 
     let raw = [];
+    let showOnlyFavs = false;
+
+    const favKey = 'jobFavs:v1';
+    const cmpKey = 'jobCompare:v1';
+    let favs = new Set(JSON.parse(localStorage.getItem(favKey) || '[]'));
+    let compare = new Set(JSON.parse(localStorage.getItem(cmpKey) || '[]'));
 
     function norm(s){ return (s||'').toString().toLowerCase().trim(); }
     function uniq(arr){ return [...new Set(arr.filter(Boolean))].sort((a,b)=>a.localeCompare(b)); }
+
+    function jobId(j){
+      // stable-ish unique key
+      return [j.Role, j['Project Title'], j.Division, j['Internship Level']].map(x => (x||'').toString().trim()).join(' | ');
+    }
 
     function fillSelect(sel, values){
       for (const v of values) {
@@ -272,15 +355,25 @@
     }
 
     function jobText(j){
-      return [j.Role, j.Division, j['Project Title'], j['Project Description'], j.Prerequisites, j['Learning Outcomes from Project'], j['Work Location']].filter(Boolean).join(' | ');
+      return [
+        j.Role,
+        j.Division,
+        j['Internship Level'],
+        j['Internship Period'],
+        j['Project Title'],
+        j['Project Description'],
+        j.Prerequisites,
+        j['Learning Outcomes from Project'],
+        j['Work Location'],
+      ].filter(Boolean).join(' | ');
     }
 
     function currentFilters(){
       return {
         q: norm(els.q.value),
+        role: els.role.value,
         division: els.division.value,
         level: els.level.value,
-        location: els.location.value,
       };
     }
 
@@ -288,13 +381,12 @@
       const f = currentFilters();
       let list = raw;
 
+      if (showOnlyFavs) list = list.filter(j => favs.has(jobId(j)));
+      if (f.role) list = list.filter(j => (j.Role||'') === f.role);
       if (f.division) list = list.filter(j => (j.Division||'') === f.division);
       if (f.level) list = list.filter(j => (j['Internship Level']||'') === f.level);
-      if (f.location) list = list.filter(j => (j['Work Location']||'') === f.location);
 
-      if (f.q) {
-        list = list.filter(j => jobText(j).toLowerCase().includes(f.q));
-      }
+      if (f.q) list = list.filter(j => jobText(j).toLowerCase().includes(f.q));
 
       render(list);
     }
@@ -305,28 +397,95 @@
       return s.slice(0,n-1) + '…';
     }
 
+    function setFav(id, on){
+      if (on) favs.add(id); else favs.delete(id);
+      localStorage.setItem(favKey, JSON.stringify([...favs]));
+    }
+
+    function setCompare(id, on){
+      if (on) {
+        if (compare.size >= 3) return false;
+        compare.add(id);
+      } else {
+        compare.delete(id);
+      }
+      localStorage.setItem(cmpKey, JSON.stringify([...compare]));
+      return true;
+    }
+
+    function updateCompareChip(){
+      els.chipCompare.textContent = `⇄ Compare (${compare.size})`;
+      els.chipCompare.classList.toggle('active', compare.size > 0);
+    }
+
     function render(list){
       els.grid.innerHTML = '';
       els.shown.textContent = `${list.length} shown`;
+      updateCompareChip();
 
       for (const j of list) {
+        const id = jobId(j);
         const card = document.createElement('article');
         card.className = 'card';
+        if (compare.has(id)) card.classList.add('selected');
+
         const h3 = document.createElement('h3');
         h3.textContent = j.Role || '(No role)';
+
         const sub = document.createElement('div');
         sub.className = 'sub';
-        const badges = [j.Division, j['Internship Level'], j['Work Location']].filter(Boolean);
-        for (const b of badges) {
+        const badges = [j['Project Title'], j.Division, j['Internship Level']].filter(Boolean);
+        for (const b of badges.slice(0,3)) {
           const s = document.createElement('span');
           s.textContent = b;
           sub.appendChild(s);
         }
+
         const desc = document.createElement('div');
         desc.className = 'desc';
-        desc.textContent = short(j['Project Description'] || j['Project Title'] || '');
+        desc.textContent = short(j['Project Description'] || '');
+
+        const icon = document.createElement('div');
+        icon.className = 'iconBtn';
+
+        const favBtn = document.createElement('button');
+        favBtn.className = 'pill fav' + (favs.has(id) ? ' on' : '');
+        favBtn.textContent = favs.has(id) ? '★' : '☆';
+        favBtn.title = 'Favourite';
+        favBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const next = !favs.has(id);
+          setFav(id, next);
+          favBtn.classList.toggle('on', next);
+          favBtn.textContent = next ? '★' : '☆';
+          if (showOnlyFavs) applyFilters();
+        });
+
+        const cmpBtn = document.createElement('button');
+        cmpBtn.className = 'pill cmp' + (compare.has(id) ? ' on' : '');
+        cmpBtn.textContent = compare.has(id) ? 'Cmp✓' : 'Cmp';
+        cmpBtn.title = 'Add to compare (max 3)';
+        cmpBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const next = !compare.has(id);
+          const ok = setCompare(id, next);
+          if (!ok) {
+            // soft warning
+            cmpBtn.style.borderColor = 'rgba(251,113,133,.7)';
+            setTimeout(() => cmpBtn.style.borderColor = '', 500);
+            return;
+          }
+          cmpBtn.classList.toggle('on', next);
+          cmpBtn.textContent = next ? 'Cmp✓' : 'Cmp';
+          card.classList.toggle('selected', next);
+          updateCompareChip();
+        });
+
+        icon.appendChild(cmpBtn);
+        icon.appendChild(favBtn);
 
         card.appendChild(h3);
+        card.appendChild(icon);
         card.appendChild(sub);
         card.appendChild(desc);
 
@@ -339,6 +498,7 @@
       els.dTitle.textContent = j.Role || '(No role)';
       els.dSub.innerHTML = '';
       const chips = [
+        ['Project', j['Project Title']],
         ['Division', j.Division],
         ['Level', j['Internship Level']],
         ['Period', j['Internship Period']],
@@ -349,19 +509,11 @@
         span.textContent = `${k}: ${v}`;
         els.dSub.appendChild(span);
       }
+
+      els.dProj.textContent = (j['Project Title'] || '').trim();
       els.dDesc.textContent = (j['Project Description'] || '').trim();
       els.dLearn.textContent = (j['Learning Outcomes from Project'] || '').trim();
       els.dPre.textContent = (j.Prerequisites || '').trim();
-      els.dOther.innerHTML = '';
-      const other = [
-        ['Project Title', j['Project Title']],
-        ['Internship Period', j['Internship Period']],
-      ].filter(x => x[1]);
-      for (const [k,v] of other) {
-        const li = document.createElement('li');
-        li.textContent = `${k}: ${v}`;
-        els.dOther.appendChild(li);
-      }
 
       els.drawer.classList.add('open');
       els.drawer.setAttribute('aria-hidden','false');
@@ -372,11 +524,86 @@
       els.drawer.setAttribute('aria-hidden','true');
     }
 
+    function openCompare(){
+      renderCompare();
+      els.cmpDrawer.classList.add('open');
+      els.cmpDrawer.setAttribute('aria-hidden','false');
+    }
+
+    function closeCompare(){
+      els.cmpDrawer.classList.remove('open');
+      els.cmpDrawer.setAttribute('aria-hidden','true');
+    }
+
+    function renderCompare(){
+      const ids = [...compare];
+      els.cmpMeta.textContent = ids.length ? `Comparing ${ids.length} role(s)` : 'Pick up to 3 cards';
+
+      const jobs = ids.map(id => raw.find(j => jobId(j) === id)).filter(Boolean);
+      els.cmpGrid.innerHTML = '';
+
+      for (const j of jobs) {
+        const card = document.createElement('div');
+        card.className = 'compareCard';
+        card.innerHTML = `
+          <h3>${escapeHtml(j.Role || '')}</h3>
+          <div class="k">Project Title</div>
+          <div class="v">${escapeHtml(j['Project Title'] || '')}</div>
+          <div class="k">Division</div>
+          <div class="v">${escapeHtml(j.Division || '')}</div>
+          <div class="k">Level</div>
+          <div class="v">${escapeHtml(j['Internship Level'] || '')}</div>
+          <div class="k">Location</div>
+          <div class="v">${escapeHtml(j['Work Location'] || '')}</div>
+          <div class="k">Prerequisites</div>
+          <div class="v">${escapeHtml(j.Prerequisites || '')}</div>
+        `;
+        els.cmpGrid.appendChild(card);
+      }
+
+      if (!jobs.length) {
+        const empty = document.createElement('div');
+        empty.className = 'compareCard';
+        empty.innerHTML = `<div class="mono">Nothing selected yet. Click “Cmp” on cards.</div>`;
+        els.cmpGrid.appendChild(empty);
+      }
+    }
+
+    function escapeHtml(s){
+      return (s||'').toString()
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'",'&#039;');
+    }
+
+    // UI events
     els.closeBtn.addEventListener('click', closeDrawer);
     els.drawer.addEventListener('click', (e) => { if (e.target === els.drawer) closeDrawer(); });
+
+    els.cmpClose.addEventListener('click', closeCompare);
+    els.cmpDrawer.addEventListener('click', (e) => { if (e.target === els.cmpDrawer) closeCompare(); });
+    els.cmpClear.addEventListener('click', () => {
+      compare = new Set();
+      localStorage.setItem(cmpKey, JSON.stringify([]));
+      updateCompareChip();
+      renderCompare();
+      applyFilters();
+    });
+
+    els.chipFavs.addEventListener('click', () => {
+      showOnlyFavs = !showOnlyFavs;
+      els.chipFavs.classList.toggle('active', showOnlyFavs);
+      applyFilters();
+    });
+
+    els.chipCompare.addEventListener('click', () => openCompare());
+
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeDrawer();
+      if (e.key === 'Escape') { closeDrawer(); closeCompare(); }
       if (e.key === '/' && document.activeElement !== els.q) { e.preventDefault(); els.q.focus(); }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); els.q.focus(); }
     });
 
     async function init(){
@@ -384,15 +611,16 @@
       raw = await res.json();
       els.count.textContent = `${raw.length} jobs`;
 
+      fillSelect(els.role, uniq(raw.map(j => j.Role)));
       fillSelect(els.division, uniq(raw.map(j => j.Division)));
       fillSelect(els.level, uniq(raw.map(j => j['Internship Level'])));
-      fillSelect(els.location, uniq(raw.map(j => j['Work Location'])));
 
-      for (const el of [els.q, els.division, els.level, els.location]) {
+      for (const el of [els.q, els.role, els.division, els.level]) {
         el.addEventListener('input', applyFilters);
         el.addEventListener('change', applyFilters);
       }
 
+      updateCompareChip();
       applyFilters();
     }
 
