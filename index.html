@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Job Browser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#0f172a;
+      --surface:rgba(255,255,255,.06);
+      --surface2:rgba(255,255,255,.08);
+      --border:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.92);
+      --dim:rgba(255,255,255,.72);
+      --muted:rgba(255,255,255,.55);
+      --accent:#38bdf8;
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --r:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(56,189,248,.18), transparent 55%),
+        radial-gradient(900px 600px at 85% 18%, rgba(34,197,94,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+    a{color:inherit}
+    .wrap{max-width:1200px;margin:0 auto;padding:18px}
+    .top{
+      display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+      padding:14px 14px;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, var(--surface2), var(--surface));
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+    .title h1{margin:0;font-size:22px;letter-spacing:-.02em}
+    .title p{margin:4px 0 0; color:var(--dim); font-size:13px}
+
+    .controls{margin-top:12px; display:grid; gap:10px}
+    @media(min-width:900px){.controls{grid-template-columns: 1.6fr 1fr 1fr 1fr}}
+
+    .field{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:10px 10px;
+      backdrop-filter: blur(12px);
+    }
+    .field label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}
+    input[type="search"], select{
+      width:100%;
+      background:rgba(0,0,0,.15);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+      padding:10px 10px;
+      border-radius:12px;
+      outline:none;
+      font-size:14px;
+    }
+    input[type="search"]::placeholder{color:rgba(255,255,255,.45)}
+
+    .meta{
+      margin-top:10px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color:var(--dim);
+      font-size:13px;
+    }
+    .chip{
+      font-family:"Fira Code", ui-monospace, Menlo, Consolas, monospace;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:var(--dim);
+      white-space:nowrap;
+    }
+    .chip.good{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.10)}
+    .chip.info{border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.10)}
+
+    .grid{margin-top:14px; display:grid; gap:12px}
+    @media(min-width:900px){.grid{grid-template-columns: repeat(2, minmax(0,1fr));}}
+
+    .card{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, var(--surface2), var(--surface));
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(16px);
+      padding:12px 12px;
+      min-width:0;
+      transition: transform .15s ease, border-color .15s ease;
+      cursor:pointer;
+    }
+    .card:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18)}
+    .card h3{margin:0 0 6px; font-size:16px; letter-spacing:-.01em}
+    .sub{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-bottom:8px}
+    .sub span{padding:4px 8px;border:1px solid rgba(255,255,255,.10);border-radius:999px;background:rgba(0,0,0,.12)}
+
+    .desc{
+      color:var(--dim);
+      font-size:13px;
+      line-height:1.45;
+      display:-webkit-box;
+      -webkit-line-clamp:4;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+      min-height: 4.9em;
+    }
+
+    /* drawer */
+    .drawer{
+      position:fixed; inset:0;
+      display:none;
+      background:rgba(0,0,0,.55);
+      backdrop-filter: blur(6px);
+      padding:18px;
+      z-index:50;
+    }
+    .drawer.open{display:block}
+    .panel{
+      max-width:900px;
+      margin:0 auto;
+      border:1px solid rgba(255,255,255,.16);
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      border-radius:18px;
+      box-shadow: 0 30px 100px rgba(0,0,0,.5);
+      overflow:hidden;
+    }
+    .panelTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;padding:14px 14px;border-bottom:1px solid rgba(255,255,255,.10)}
+    .panelTop h2{margin:0;font-size:18px;letter-spacing:-.02em}
+    .btn{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    .btn:hover{border-color:rgba(255,255,255,.28)}
+    .panelBody{padding:14px 14px; display:grid; gap:12px}
+    @media(min-width:900px){.panelBody{grid-template-columns: 1fr 1fr}}
+
+    .box{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.14);
+      border-radius:16px;
+      padding:12px 12px;
+      min-width:0;
+    }
+    .box h4{margin:0 0 8px; font-size:12px; color:var(--muted); font-family:"Fira Code"; font-weight:600}
+    .box p, .box li{margin:0;color:var(--dim);font-size:13px;line-height:1.55; overflow-wrap:anywhere; word-break:break-word}
+    .box ul{margin:0;padding-left:18px}
+    .mono{font-family:"Fira Code";font-size:12px;color:var(--dim)}
+
+    .footer{margin-top:14px;color:var(--muted);font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="title">
+        <h1>Job Browser</h1>
+        <p>Filter + click a card to read full descriptions without suffering.</p>
+      </div>
+      <div class="chip info" id="fileChip">Loaded: jobs.json</div>
+    </header>
+
+    <section class="controls">
+      <div class="field">
+        <label>Search</label>
+        <input id="q" type="search" placeholder="role, project title, division, keywords..." />
+      </div>
+      <div class="field">
+        <label>Division</label>
+        <select id="division"><option value="">All</option></select>
+      </div>
+      <div class="field">
+        <label>Level</label>
+        <select id="level"><option value="">All</option></select>
+      </div>
+      <div class="field">
+        <label>Work location</label>
+        <select id="location"><option value="">All</option></select>
+      </div>
+    </section>
+
+    <div class="meta">
+      <span class="chip" id="count">0 jobs</span>
+      <span class="chip good" id="shown">0 shown</span>
+      <span class="chip" id="hint">Tip: press <span class="mono">/</span> to focus search</span>
+    </div>
+
+    <section class="grid" id="grid"></section>
+
+    <div class="footer">Built by Pebble • local static HTML • no external tracking</div>
+  </div>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="panel" role="dialog" aria-modal="true">
+      <div class="panelTop">
+        <div>
+          <h2 id="dTitle">Title</h2>
+          <div class="sub" id="dSub"></div>
+        </div>
+        <button class="btn" id="closeBtn">Close</button>
+      </div>
+      <div class="panelBody">
+        <div class="box">
+          <h4>Project Description</h4>
+          <p id="dDesc"></p>
+        </div>
+        <div class="box">
+          <h4>Learning Outcomes</h4>
+          <p id="dLearn"></p>
+        </div>
+        <div class="box">
+          <h4>Prerequisites</h4>
+          <p id="dPre"></p>
+        </div>
+        <div class="box">
+          <h4>Other</h4>
+          <ul id="dOther"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DATA_URL = './jobs.json';
+    const els = {
+      q: document.getElementById('q'),
+      division: document.getElementById('division'),
+      level: document.getElementById('level'),
+      location: document.getElementById('location'),
+      grid: document.getElementById('grid'),
+      count: document.getElementById('count'),
+      shown: document.getElementById('shown'),
+      drawer: document.getElementById('drawer'),
+      closeBtn: document.getElementById('closeBtn'),
+      dTitle: document.getElementById('dTitle'),
+      dSub: document.getElementById('dSub'),
+      dDesc: document.getElementById('dDesc'),
+      dLearn: document.getElementById('dLearn'),
+      dPre: document.getElementById('dPre'),
+      dOther: document.getElementById('dOther'),
+    };
+
+    let raw = [];
+
+    function norm(s){ return (s||'').toString().toLowerCase().trim(); }
+    function uniq(arr){ return [...new Set(arr.filter(Boolean))].sort((a,b)=>a.localeCompare(b)); }
+
+    function fillSelect(sel, values){
+      for (const v of values) {
+        const opt = document.createElement('option');
+        opt.value = v; opt.textContent = v;
+        sel.appendChild(opt);
+      }
+    }
+
+    function jobText(j){
+      return [j.Role, j.Division, j['Project Title'], j['Project Description'], j.Prerequisites, j['Learning Outcomes from Project'], j['Work Location']].filter(Boolean).join(' | ');
+    }
+
+    function currentFilters(){
+      return {
+        q: norm(els.q.value),
+        division: els.division.value,
+        level: els.level.value,
+        location: els.location.value,
+      };
+    }
+
+    function applyFilters(){
+      const f = currentFilters();
+      let list = raw;
+
+      if (f.division) list = list.filter(j => (j.Division||'') === f.division);
+      if (f.level) list = list.filter(j => (j['Internship Level']||'') === f.level);
+      if (f.location) list = list.filter(j => (j['Work Location']||'') === f.location);
+
+      if (f.q) {
+        list = list.filter(j => jobText(j).toLowerCase().includes(f.q));
+      }
+
+      render(list);
+    }
+
+    function short(s, n=220){
+      s = (s||'').toString().replace(/\s+/g,' ').trim();
+      if (s.length <= n) return s;
+      return s.slice(0,n-1) + '…';
+    }
+
+    function render(list){
+      els.grid.innerHTML = '';
+      els.shown.textContent = `${list.length} shown`;
+
+      for (const j of list) {
+        const card = document.createElement('article');
+        card.className = 'card';
+        const h3 = document.createElement('h3');
+        h3.textContent = j.Role || '(No role)';
+        const sub = document.createElement('div');
+        sub.className = 'sub';
+        const badges = [j.Division, j['Internship Level'], j['Work Location']].filter(Boolean);
+        for (const b of badges) {
+          const s = document.createElement('span');
+          s.textContent = b;
+          sub.appendChild(s);
+        }
+        const desc = document.createElement('div');
+        desc.className = 'desc';
+        desc.textContent = short(j['Project Description'] || j['Project Title'] || '');
+
+        card.appendChild(h3);
+        card.appendChild(sub);
+        card.appendChild(desc);
+
+        card.addEventListener('click', () => openDrawer(j));
+        els.grid.appendChild(card);
+      }
+    }
+
+    function openDrawer(j){
+      els.dTitle.textContent = j.Role || '(No role)';
+      els.dSub.innerHTML = '';
+      const chips = [
+        ['Division', j.Division],
+        ['Level', j['Internship Level']],
+        ['Period', j['Internship Period']],
+        ['Location', j['Work Location']],
+      ].filter(x => x[1]);
+      for (const [k,v] of chips) {
+        const span = document.createElement('span');
+        span.textContent = `${k}: ${v}`;
+        els.dSub.appendChild(span);
+      }
+      els.dDesc.textContent = (j['Project Description'] || '').trim();
+      els.dLearn.textContent = (j['Learning Outcomes from Project'] || '').trim();
+      els.dPre.textContent = (j.Prerequisites || '').trim();
+      els.dOther.innerHTML = '';
+      const other = [
+        ['Project Title', j['Project Title']],
+        ['Internship Period', j['Internship Period']],
+      ].filter(x => x[1]);
+      for (const [k,v] of other) {
+        const li = document.createElement('li');
+        li.textContent = `${k}: ${v}`;
+        els.dOther.appendChild(li);
+      }
+
+      els.drawer.classList.add('open');
+      els.drawer.setAttribute('aria-hidden','false');
+    }
+
+    function closeDrawer(){
+      els.drawer.classList.remove('open');
+      els.drawer.setAttribute('aria-hidden','true');
+    }
+
+    els.closeBtn.addEventListener('click', closeDrawer);
+    els.drawer.addEventListener('click', (e) => { if (e.target === els.drawer) closeDrawer(); });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDrawer();
+      if (e.key === '/' && document.activeElement !== els.q) { e.preventDefault(); els.q.focus(); }
+    });
+
+    async function init(){
+      const res = await fetch(DATA_URL);
+      raw = await res.json();
+      els.count.textContent = `${raw.length} jobs`;
+
+      fillSelect(els.division, uniq(raw.map(j => j.Division)));
+      fillSelect(els.level, uniq(raw.map(j => j['Internship Level'])));
+      fillSelect(els.location, uniq(raw.map(j => j['Work Location'])));
+
+      for (const el of [els.q, els.division, els.level, els.location]) {
+        el.addEventListener('input', applyFilters);
+        el.addEventListener('change', applyFilters);
+      }
+
+      applyFilters();
+    }
+
+    init().catch(err => {
+      els.grid.innerHTML = `<div class="card"><h3>Failed to load data</h3><div class="desc">${err}</div></div>`;
+    });
+  </script>
+</body>
+</html>
