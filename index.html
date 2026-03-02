@@ -40,7 +40,7 @@
     .wrap{max-width:1200px;margin:0 auto;padding:18px}
 
     .top{
-      display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+      display:flex; gap:12px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
       padding:14px 14px;
       border:1px solid var(--border);
       background:linear-gradient(180deg, var(--surface2), var(--surface));
@@ -53,8 +53,8 @@
 .title p a{color:rgba(56,189,248,.95); text-decoration:none; border-bottom:1px solid rgba(56,189,248,.35)}
 .title p a:hover{border-bottom-color:rgba(56,189,248,.75)}
 
-    .controls{margin-top:12px; display:grid; gap:10px}
-    @media(min-width:900px){.controls{grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr}}
+    .controls{margin-top:12px; display:grid; gap:10px; position:relative; z-index:30}
+    @media(min-width:900px){.controls{grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr}}
 
     .field{
       border:1px solid var(--border);
@@ -101,7 +101,7 @@
       top:calc(100% + 8px);
       left:0;
       right:0;
-      z-index:20;
+      z-index:200;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(8,12,22,.92);
       backdrop-filter: blur(18px);
@@ -134,6 +134,9 @@
       color:var(--dim);
       white-space:nowrap;
       user-select:none;
+      max-width:100%;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
     .chip.good{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.10)}
     .chip.info{border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.10)}
@@ -250,9 +253,9 @@
     .mono{font-family:"Fira Code";font-size:12px;color:var(--dim)}
 
     /* compare */
-    .compareWrap{padding:14px; overflow-x:auto}
-    .compareGrid{display:grid; gap:12px; min-width:760px}
-    @media(min-width:900px){.compareGrid{grid-template-columns: repeat(3, minmax(0,1fr)); min-width:0}}
+    .compareWrap{padding:14px; overflow-x:hidden}
+    .compareGrid{display:grid; gap:12px; grid-template-columns: 1fr}
+    @media(min-width:900px){.compareGrid{grid-template-columns: repeat(3, minmax(0,1fr));}}
     .compareCard{border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.16); border-radius:16px; padding:12px; max-height:70vh; overflow:auto}
     .compareCard h3{margin:0 0 8px; font-size:14px}
     .compareCard .k{color:var(--muted); font-family:"Fira Code"; font-size:11px; margin-top:10px}
@@ -268,7 +271,7 @@
         <h1>GovTech 2026 Intern Listings</h1>
         <p>Updated daily from <a href="https://go.gov.sg/govtechinternshipprojects2026" target="_blank" rel="noopener noreferrer">go.gov.sg/govtechinternshipprojects2026</a> • Star favourites • Compare side-by-side.</p>
       </div>
-      <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end">
+      <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end; max-width:100%">
         <div class="chip info" id="fileChip">Loaded: jobs.json</div>
         <div class="chip info">Last updated: 3 Mar 2026</div>
       </div>
@@ -281,7 +284,12 @@
       </div>
 
       <div class="field">
-        <label>Role (sheet)</label>
+        <label>Category</label>
+        <details class="ms" id="msCategory"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
+      </div>
+
+      <div class="field">
+        <label>Role</label>
         <details class="ms" id="msRole"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
       </div>
 
@@ -365,6 +373,7 @@
 
     const els = {
       q: document.getElementById('q'),
+      msCategory: document.getElementById('msCategory'),
       msRole: document.getElementById('msRole'),
       msDivision: document.getElementById('msDivision'),
       msLevel: document.getElementById('msLevel'),
@@ -477,7 +486,7 @@
     }
 
     function refreshSummaries(){
-      [els.msRole, els.msDivision, els.msLevel, els.msPeriod].forEach(refreshSummary);
+      [els.msCategory, els.msRole, els.msDivision, els.msLevel, els.msPeriod].forEach(refreshSummary);
     }
 
     function jobText(j){
@@ -497,6 +506,7 @@
     function currentFilters(){
       return {
         q: norm(els.q.value),
+        category: selectedValues(els.msCategory),
         role: selectedValues(els.msRole),
         division: selectedValues(els.msDivision),
         level: selectedValues(els.msLevel),
@@ -511,6 +521,7 @@
       let list = raw;
 
       if (showOnlyFavs) list = list.filter(j => favs.has(jobId(j)));
+      if (hasAny(f.category)) list = list.filter(j => f.category.includes((j.Category||'')));
       if (hasAny(f.role)) list = list.filter(j => f.role.includes((j.Role||'')));
       if (hasAny(f.division)) list = list.filter(j => f.division.includes((j.Division||'')));
       if (hasAny(f.level)) list = list.filter(j => f.level.includes((j['Internship Level']||'')));
@@ -530,6 +541,7 @@
         let list = raw;
         if (showOnlyFavs) list = list.filter(j => favs.has(jobId(j)));
 
+        if (exceptKey !== 'category' && hasAny(f.category)) list = list.filter(j => f.category.includes((j.Category||'')));
         if (exceptKey !== 'role' && hasAny(f.role)) list = list.filter(j => f.role.includes((j.Role||'')));
         if (exceptKey !== 'division' && hasAny(f.division)) list = list.filter(j => f.division.includes((j.Division||'')));
         if (exceptKey !== 'level' && hasAny(f.level)) list = list.filter(j => f.level.includes((j['Internship Level']||'')));
@@ -540,6 +552,8 @@
 
       const base = applyFilters();
 
+      const countsCategory = new Map();
+      for (const j of applyExcept('category')) countsCategory.set(j.Category, (countsCategory.get(j.Category)||0)+1);
       const countsRole = new Map();
       for (const j of applyExcept('role')) countsRole.set(j.Role, (countsRole.get(j.Role)||0)+1);
       const countsDiv = new Map();
@@ -550,11 +564,13 @@
       for (const j of applyExcept('period')) countsPeriod.set(j['Internship Period'], (countsPeriod.get(j['Internship Period'])||0)+1);
 
       // rebuild menus with disabled irrelevant options
+      const selectedCategory = new Set(f.category);
       const selectedRole = new Set(f.role);
       const selectedDiv = new Set(f.division);
       const selectedLevel = new Set(f.level);
       const selectedPeriod = new Set(f.period);
 
+      fillMulti(els.msCategory, uniq(raw.map(j => j.Category)), selectedCategory, countsCategory);
       fillMulti(els.msRole, uniq(raw.map(j => j.Role)), selectedRole, countsRole);
       fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), selectedDiv, countsDiv);
       fillMulti(els.msLevel, uniq(raw.map(j => j['Internship Level'])), selectedLevel, countsLevel);
@@ -611,11 +627,11 @@
         if (compareHas(id)) card.classList.add('selected');
 
         const h3 = document.createElement('h3');
-        h3.textContent = j.Role || '(No role)';
+        h3.textContent = j.Role || j['Project Title'] || '(No role)';
 
         const sub = document.createElement('div');
         sub.className = 'sub';
-        const badges = [j['Project Title'], j.Division, j['Internship Level']].filter(Boolean);
+        const badges = [j.Category, j['Project Title'], j.Division, j['Internship Level'], j['Internship Period']].filter(Boolean);
         for (const b of badges.slice(0,3)) {
           const s = document.createElement('span');
           s.textContent = b;
@@ -672,6 +688,7 @@
       els.dSub.innerHTML = '';
       const chips = [
         ['Project', j['Project Title']],
+        ['Category', j.Category],
         ['Division', j.Division],
         ['Level', j['Internship Level']],
         ['Period', j['Internship Period']],
@@ -786,6 +803,7 @@
       els.count.textContent = `${raw.length} jobs`;
 
       // build multi-select menus
+      fillMulti(els.msCategory, uniq(raw.map(j => j.Category)), new Set());
       fillMulti(els.msRole, uniq(raw.map(j => j.Role)), new Set());
       fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), new Set());
       fillMulti(els.msLevel, uniq(raw.map(j => j['Internship Level'])), new Set());
@@ -797,6 +815,14 @@
         d.addEventListener('toggle', () => {
           if (d.open) document.querySelectorAll('details.ms').forEach(o => { if (o !== d) o.open = false; });
         });
+      });
+
+      // click-outside closes any open multi-select
+      document.addEventListener('click', (e) => {
+        const t = e.target;
+        if (!t.closest || !t.closest('details.ms')) {
+          document.querySelectorAll('details.ms').forEach(d => d.open = false);
+        }
       });
 
       els.q.addEventListener('input', () => applyFiltersAndRefresh());

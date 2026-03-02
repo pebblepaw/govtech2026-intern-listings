@@ -35,10 +35,12 @@ for (const sheetName of wb.SheetNames) {
       const kk = (k || '').toString().trim();
       clean[kk] = (v instanceof Date) ? v.toISOString().slice(0,10) : (typeof v === 'string' ? v.trim() : v);
     }
-    clean['Role'] = sheetName;
+    // Sheet name is a category/grouping, NOT the actual role column
+    clean['Category'] = sheetName;
     
     // Skip empty or instruction-like rows
     const role = (clean['Role'] || '').toString().trim();
+    const category = (clean['Category'] || '').toString().trim();
     const pTitleRaw = (clean['Project Title'] || '').toString().trim();
     const pTitle = pTitleRaw.toLowerCase();
     const div = (clean['Division'] || '').toString().trim();
@@ -46,26 +48,26 @@ for (const sheetName of wb.SheetNames) {
 
     if (!pTitleRaw) continue;
     if (pTitle.includes('instruction')) continue;
-    if (role.toLowerCase() === 'instructions') continue;
+    if (category.toLowerCase() === 'instructions') continue;
 
     // drop rows that are basically empty placeholders
     if (!div && !desc && !(clean['Learning Outcomes from Project']||'').toString().trim() && !(clean['Prerequisites']||'').toString().trim()) continue;
 
     // Dedup key
-    const uniqueKey = `${role}|${pTitleRaw}|${div}`;
+    const uniqueKey = `${category}|${role}|${pTitleRaw}|${div}`;
     if (seen.has(uniqueKey)) continue;
     seen.add(uniqueKey);
     all.push(clean);
   }
 }
 
-// Forward-fill Division within each role (sheet)
-const lastDivByRole = new Map();
+// Forward-fill Division within each category (sheet)
+const lastDivByCat = new Map();
 for (const r of all) {
-  const role = r.Role;
+  const cat = r.Category;
   const div = (r['Division'] || '').toString().trim();
-  if (div) lastDivByRole.set(role, div);
-  else if (lastDivByRole.has(role)) r['Division'] = lastDivByRole.get(role);
+  if (div) lastDivByCat.set(cat, div);
+  else if (lastDivByCat.has(cat)) r['Division'] = lastDivByCat.get(cat);
 }
 
 fs.writeFileSync(outPath, JSON.stringify(all, null, 2));
