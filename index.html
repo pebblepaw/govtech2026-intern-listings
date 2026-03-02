@@ -71,6 +71,8 @@
       position:relative;
       z-index:0;
     }
+    /* When a dropdown inside this field is open, lift this whole field above its siblings (mobile fix) */
+    .field.open{z-index:15000}
     .field label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}
     input[type="search"], select{
       width:100%;
@@ -809,10 +811,19 @@
       fillMulti(els.msPeriod, uniq(raw.map(j => j['Internship Period'])), new Set());
       refreshSummaries();
 
-      // close other dropdowns when one opens
+      // close other dropdowns when one opens + lift the active field above siblings (mobile)
       document.querySelectorAll('details.ms').forEach(d => {
         d.addEventListener('toggle', () => {
-          if (d.open) document.querySelectorAll('details.ms').forEach(o => { if (o !== d) o.open = false; });
+          // clear all field lifts
+          document.querySelectorAll('.field.open').forEach(f => f.classList.remove('open'));
+
+          if (d.open) {
+            // close other dropdowns
+            document.querySelectorAll('details.ms').forEach(o => { if (o !== d) o.open = false; });
+            // lift parent field
+            const field = d.closest('.field');
+            if (field) field.classList.add('open');
+          }
         });
       });
 
@@ -821,6 +832,7 @@
         const t = e.target;
         if (!t.closest || !t.closest('details.ms')) {
           document.querySelectorAll('details.ms').forEach(d => d.open = false);
+          document.querySelectorAll('.field.open').forEach(f => f.classList.remove('open'));
         }
       });
 
