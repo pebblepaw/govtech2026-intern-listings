@@ -74,6 +74,49 @@
       outline:none;
       font-size:14px;
     }
+
+    /* multi-select */
+    details.ms{position:relative}
+    details.ms > summary{
+      list-style:none;
+      cursor:pointer;
+      user-select:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      width:100%;
+      background:rgba(0,0,0,.15);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+      padding:10px 10px;
+      border-radius:12px;
+      outline:none;
+      font-size:14px;
+    }
+    details.ms > summary::-webkit-details-marker{display:none}
+    .msCount{color:rgba(255,255,255,.55); font-family:"Fira Code"; font-size:12px}
+    .msMenu{
+      position:absolute;
+      top:calc(100% + 8px);
+      left:0;
+      right:0;
+      z-index:20;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(8,12,22,.92);
+      backdrop-filter: blur(18px);
+      border-radius:14px;
+      padding:8px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
+      max-height:260px;
+      overflow:auto;
+    }
+    .msItem{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 10px; border-radius:10px;}
+    .msItem:hover{background:rgba(255,255,255,.06)}
+    .msItem label{display:flex; align-items:center; gap:10px; cursor:pointer; margin:0; color:rgba(255,255,255,.82); font-size:13px}
+    .msItem input{accent-color: var(--accent)}
+    .msItem .msBadge{font-family:"Fira Code"; font-size:11px; color:rgba(255,255,255,.45)}
+    .msItem.disabled{opacity:.45; pointer-events:none}
     input[type="search"]::placeholder{color:rgba(255,255,255,.45)}
 
     .meta{
@@ -170,6 +213,9 @@
       border-radius:18px;
       box-shadow: 0 30px 100px rgba(0,0,0,.5);
       overflow:hidden;
+      max-height:90vh;
+      display:flex;
+      flex-direction:column;
     }
     .panelTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;padding:14px 14px;border-bottom:1px solid rgba(255,255,255,.10)}
     .panelTop h2{margin:0;font-size:18px;letter-spacing:-.02em}
@@ -183,8 +229,13 @@
       font-size:13px;
     }
     .btn:hover{border-color:rgba(255,255,255,.28)}
-    .panelBody{padding:14px 14px; display:grid; gap:12px}
-    @media(min-width:900px){.panelBody{grid-template-columns: 1fr 1fr}}
+    .panelBody{padding:14px 14px; display:grid; gap:12px; align-items:start; overflow:auto}
+    @media(min-width:900px){
+      .panelBody{grid-template-columns: 1fr 1fr; grid-template-areas: "desc learn" "pre learn";}
+      #boxDesc{grid-area:desc}
+      #boxLearn{grid-area:learn}
+      #boxPre{grid-area:pre}
+    }
 
     .box{
       border:1px solid rgba(255,255,255,.10);
@@ -228,21 +279,25 @@
         <label>Search</label>
         <input id="q" type="search" placeholder="project title, keywords..." />
       </div>
+
       <div class="field">
         <label>Role (sheet)</label>
-        <select id="role"><option value="">All</option></select>
+        <details class="ms" id="msRole"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
       </div>
+
       <div class="field">
         <label>Division</label>
-        <select id="division"><option value="">All</option></select>
+        <details class="ms" id="msDivision"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
       </div>
+
       <div class="field">
         <label>Level</label>
-        <select id="level"><option value="">All</option></select>
+        <details class="ms" id="msLevel"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
       </div>
+
       <div class="field">
         <label>Duration</label>
-        <select id="period"><option value="">All</option></select>
+        <details class="ms" id="msPeriod"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
       </div>
     </section>
 
@@ -270,15 +325,15 @@
         <button class="btn" id="closeBtn">Close</button>
       </div>
       <div class="panelBody">
-        <div class="box">
+        <div class="box" id="boxDesc">
           <h4>Project Description</h4>
           <p id="dDesc"></p>
         </div>
-        <div class="box">
+        <div class="box" id="boxLearn">
           <h4>Learning Outcomes</h4>
           <p id="dLearn"></p>
         </div>
-        <div class="box">
+        <div class="box" id="boxPre">
           <h4>Prerequisites</h4>
           <p id="dPre"></p>
         </div>
@@ -310,10 +365,10 @@
 
     const els = {
       q: document.getElementById('q'),
-      role: document.getElementById('role'),
-      division: document.getElementById('division'),
-      level: document.getElementById('level'),
-      period: document.getElementById('period'),
+      msRole: document.getElementById('msRole'),
+      msDivision: document.getElementById('msDivision'),
+      msLevel: document.getElementById('msLevel'),
+      msPeriod: document.getElementById('msPeriod'),
       grid: document.getElementById('grid'),
       count: document.getElementById('count'),
       shown: document.getElementById('shown'),
@@ -341,7 +396,12 @@
     const favKey = 'jobFavs:v1';
     const cmpKey = 'jobCompare:v1';
     let favs = new Set(JSON.parse(localStorage.getItem(favKey) || '[]'));
-    let compare = new Set(JSON.parse(localStorage.getItem(cmpKey) || '[]'));
+
+    // compare is an ordered queue (latest 3)
+    let compare = JSON.parse(localStorage.getItem(cmpKey) || '[]');
+    if (!Array.isArray(compare)) compare = [];
+    compare = compare.filter(Boolean);
+    if (compare.length > 3) compare = compare.slice(-3);
 
     function norm(s){ return (s||'').toString().toLowerCase().trim(); }
     function uniq(arr){ return [...new Set(arr.filter(Boolean))].sort((a,b)=>a.localeCompare(b)); }
@@ -351,12 +411,73 @@
       return [j.Role, j['Project Title'], j.Division, j['Internship Level']].map(x => (x||'').toString().trim()).join(' | ');
     }
 
-    function fillSelect(sel, values){
+    function fillMulti(detailsEl, values, selected, counts = null){
+      const menu = detailsEl.querySelector('.msMenu');
+      menu.innerHTML = '';
+
       for (const v of values) {
-        const opt = document.createElement('option');
-        opt.value = v; opt.textContent = v;
-        sel.appendChild(opt);
+        const row = document.createElement('div');
+        row.className = 'msItem';
+
+        const id = `${detailsEl.id}__${btoa(unescape(encodeURIComponent(v))).slice(0,18)}`;
+        const label = document.createElement('label');
+        label.setAttribute('for', id);
+
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.id = id;
+        cb.value = v;
+        cb.checked = selected.has(v);
+
+        const text = document.createElement('span');
+        text.textContent = v;
+
+        label.appendChild(cb);
+        label.appendChild(text);
+
+        const badge = document.createElement('span');
+        badge.className = 'msBadge';
+        const c = counts ? (counts.get(v) || 0) : null;
+        badge.textContent = (c === null) ? '' : String(c);
+
+        if (counts && c === 0 && !selected.has(v)) row.classList.add('disabled');
+
+        row.appendChild(label);
+        row.appendChild(badge);
+        menu.appendChild(row);
       }
+
+      // click behaviour: change event triggers filtering + option refresh
+      menu.querySelectorAll('input[type=checkbox]').forEach(cb => {
+        cb.addEventListener('change', () => {
+          refreshSummaries();
+          applyFiltersAndRefresh();
+        });
+      });
+    }
+
+    function selectedValues(detailsEl){
+      return [...detailsEl.querySelectorAll('.msMenu input[type=checkbox]:checked')].map(x => x.value);
+    }
+
+    function refreshSummary(detailsEl){
+      const vals = selectedValues(detailsEl);
+      const textEl = detailsEl.querySelector('.msText');
+      const countEl = detailsEl.querySelector('.msCount');
+      if (!vals.length) {
+        textEl.textContent = 'All';
+        countEl.textContent = '';
+      } else if (vals.length === 1) {
+        textEl.textContent = vals[0];
+        countEl.textContent = '';
+      } else {
+        textEl.textContent = `${vals[0]}`;
+        countEl.textContent = `+${vals.length - 1}`;
+      }
+    }
+
+    function refreshSummaries(){
+      [els.msRole, els.msDivision, els.msLevel, els.msPeriod].forEach(refreshSummary);
     }
 
     function jobText(j){
@@ -376,26 +497,72 @@
     function currentFilters(){
       return {
         q: norm(els.q.value),
-        role: els.role.value,
-        division: els.division.value,
-        level: els.level.value,
-        period: els.period.value,
+        role: selectedValues(els.msRole),
+        division: selectedValues(els.msDivision),
+        level: selectedValues(els.msLevel),
+        period: selectedValues(els.msPeriod),
       };
     }
+
+    function hasAny(arr){ return Array.isArray(arr) && arr.length > 0; }
 
     function applyFilters(){
       const f = currentFilters();
       let list = raw;
 
       if (showOnlyFavs) list = list.filter(j => favs.has(jobId(j)));
-      if (f.role) list = list.filter(j => (j.Role||'') === f.role);
-      if (f.division) list = list.filter(j => (j.Division||'') === f.division);
-      if (f.level) list = list.filter(j => (j['Internship Level']||'') === f.level);
-      if (f.period) list = list.filter(j => (j['Internship Period']||'') === f.period);
+      if (hasAny(f.role)) list = list.filter(j => f.role.includes((j.Role||'')));
+      if (hasAny(f.division)) list = list.filter(j => f.division.includes((j.Division||'')));
+      if (hasAny(f.level)) list = list.filter(j => f.level.includes((j['Internship Level']||'')));
+      if (hasAny(f.period)) list = list.filter(j => f.period.includes((j['Internship Period']||'')));
 
       if (f.q) list = list.filter(j => jobText(j).toLowerCase().includes(f.q));
 
       render(list);
+      return list;
+    }
+
+    function applyFiltersAndRefresh(){
+      // Apply filters, then recompute available options for each filter based on remaining results.
+      const f = currentFilters();
+
+      function applyExcept(exceptKey){
+        let list = raw;
+        if (showOnlyFavs) list = list.filter(j => favs.has(jobId(j)));
+
+        if (exceptKey !== 'role' && hasAny(f.role)) list = list.filter(j => f.role.includes((j.Role||'')));
+        if (exceptKey !== 'division' && hasAny(f.division)) list = list.filter(j => f.division.includes((j.Division||'')));
+        if (exceptKey !== 'level' && hasAny(f.level)) list = list.filter(j => f.level.includes((j['Internship Level']||'')));
+        if (exceptKey !== 'period' && hasAny(f.period)) list = list.filter(j => f.period.includes((j['Internship Period']||'')));
+        if (f.q) list = list.filter(j => jobText(j).toLowerCase().includes(f.q));
+        return list;
+      }
+
+      const base = applyFilters();
+
+      const countsRole = new Map();
+      for (const j of applyExcept('role')) countsRole.set(j.Role, (countsRole.get(j.Role)||0)+1);
+      const countsDiv = new Map();
+      for (const j of applyExcept('division')) countsDiv.set(j.Division, (countsDiv.get(j.Division)||0)+1);
+      const countsLevel = new Map();
+      for (const j of applyExcept('level')) countsLevel.set(j['Internship Level'], (countsLevel.get(j['Internship Level'])||0)+1);
+      const countsPeriod = new Map();
+      for (const j of applyExcept('period')) countsPeriod.set(j['Internship Period'], (countsPeriod.get(j['Internship Period'])||0)+1);
+
+      // rebuild menus with disabled irrelevant options
+      const selectedRole = new Set(f.role);
+      const selectedDiv = new Set(f.division);
+      const selectedLevel = new Set(f.level);
+      const selectedPeriod = new Set(f.period);
+
+      fillMulti(els.msRole, uniq(raw.map(j => j.Role)), selectedRole, countsRole);
+      fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), selectedDiv, countsDiv);
+      fillMulti(els.msLevel, uniq(raw.map(j => j['Internship Level'])), selectedLevel, countsLevel);
+      fillMulti(els.msPeriod, uniq(raw.map(j => j['Internship Period'])), selectedPeriod, countsPeriod);
+
+      refreshSummaries();
+
+      return base;
     }
 
     function short(s, n=220){
@@ -409,20 +576,27 @@
       localStorage.setItem(favKey, JSON.stringify([...favs]));
     }
 
+    function compareHas(id){
+      return compare.includes(id);
+    }
+
     function setCompare(id, on){
       if (on) {
-        if (compare.size >= 3) return false;
-        compare.add(id);
+        // if already present, move it to end (most recent)
+        compare = compare.filter(x => x !== id);
+        compare.push(id);
+        if (compare.length > 3) compare = compare.slice(-3);
       } else {
-        compare.delete(id);
+        compare = compare.filter(x => x !== id);
       }
-      localStorage.setItem(cmpKey, JSON.stringify([...compare]));
+      localStorage.setItem(cmpKey, JSON.stringify(compare));
+      updateCompareChip();
       return true;
     }
 
     function updateCompareChip(){
-      els.chipCompare.textContent = `⇄ Compare (${compare.size})`;
-      els.chipCompare.classList.toggle('active', compare.size > 0);
+      els.chipCompare.textContent = `⇄ Compare (${compare.length})`;
+      els.chipCompare.classList.toggle('active', compare.length > 0);
     }
 
     function render(list){
@@ -434,7 +608,7 @@
         const id = jobId(j);
         const card = document.createElement('article');
         card.className = 'card';
-        if (compare.has(id)) card.classList.add('selected');
+        if (compareHas(id)) card.classList.add('selected');
 
         const h3 = document.createElement('h3');
         h3.textContent = j.Role || '(No role)';
@@ -469,23 +643,15 @@
         });
 
         const cmpBtn = document.createElement('button');
-        cmpBtn.className = 'pill cmp' + (compare.has(id) ? ' on' : '');
-        cmpBtn.textContent = compare.has(id) ? 'Cmp✓' : 'Cmp';
+        cmpBtn.className = 'pill cmp' + (compareHas(id) ? ' on' : '');
+        cmpBtn.textContent = compareHas(id) ? 'Cmp✓' : 'Cmp';
         cmpBtn.title = 'Add to compare (max 3)';
         cmpBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          const next = !compare.has(id);
-          const ok = setCompare(id, next);
-          if (!ok) {
-            // soft warning
-            cmpBtn.style.borderColor = 'rgba(251,113,133,.7)';
-            setTimeout(() => cmpBtn.style.borderColor = '', 500);
-            return;
-          }
-          cmpBtn.classList.toggle('on', next);
-          cmpBtn.textContent = next ? 'Cmp✓' : 'Cmp';
-          card.classList.toggle('selected', next);
-          updateCompareChip();
+          const next = !compareHas(id);
+          setCompare(id, next);
+          // re-render to reflect "latest 3" behaviour cleanly
+          applyFiltersAndRefresh();
         });
 
         icon.appendChild(cmpBtn);
@@ -542,8 +708,8 @@
     }
 
     function renderCompare(){
-      const ids = [...compare];
-      els.cmpMeta.textContent = ids.length ? `Comparing ${ids.length} role(s)` : 'Pick up to 3 cards';
+      const ids = compare.slice();
+      els.cmpMeta.textContent = ids.length ? `Comparing latest ${ids.length}` : 'Pick up to 3 cards';
 
       const jobs = ids.map(id => raw.find(j => jobId(j) === id)).filter(Boolean);
       els.cmpGrid.innerHTML = '';
@@ -593,17 +759,17 @@
     els.cmpClose.addEventListener('click', closeCompare);
     els.cmpDrawer.addEventListener('click', (e) => { if (e.target === els.cmpDrawer) closeCompare(); });
     els.cmpClear.addEventListener('click', () => {
-      compare = new Set();
+      compare = [];
       localStorage.setItem(cmpKey, JSON.stringify([]));
       updateCompareChip();
       renderCompare();
-      applyFilters();
+      applyFiltersAndRefresh();
     });
 
     els.chipFavs.addEventListener('click', () => {
       showOnlyFavs = !showOnlyFavs;
       els.chipFavs.classList.toggle('active', showOnlyFavs);
-      applyFilters();
+      applyFiltersAndRefresh();
     });
 
     els.chipCompare.addEventListener('click', () => openCompare());
@@ -619,20 +785,24 @@
       raw = await res.json();
       els.count.textContent = `${raw.length} jobs`;
 
-      fillSelect(els.role, uniq(raw.map(j => j.Role)));
-      fillSelect(els.division, uniq(raw.map(j => j.Division)));
-      fillSelect(els.level, uniq(raw.map(j => j['Internship Level'])));
-      // period filled below (Duration)
+      // build multi-select menus
+      fillMulti(els.msRole, uniq(raw.map(j => j.Role)), new Set());
+      fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), new Set());
+      fillMulti(els.msLevel, uniq(raw.map(j => j['Internship Level'])), new Set());
+      fillMulti(els.msPeriod, uniq(raw.map(j => j['Internship Period'])), new Set());
+      refreshSummaries();
 
-      fillSelect(els.period, uniq(raw.map(j => j['Internship Period'])));
+      // close other dropdowns when one opens
+      document.querySelectorAll('details.ms').forEach(d => {
+        d.addEventListener('toggle', () => {
+          if (d.open) document.querySelectorAll('details.ms').forEach(o => { if (o !== d) o.open = false; });
+        });
+      });
 
-      for (const el of [els.q, els.role, els.division, els.level, els.period]) {
-        el.addEventListener('input', applyFilters);
-        el.addEventListener('change', applyFilters);
-      }
+      els.q.addEventListener('input', () => applyFiltersAndRefresh());
 
       updateCompareChip();
-      applyFilters();
+      applyFiltersAndRefresh();
     }
 
     init().catch(err => {
