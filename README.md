@@ -11,4 +11,4 @@ A lightweight, fast, client-side static web application to browse GovTech's 2026
 - **Compare:** Select up to 3 roles and compare their prerequisites, learning outcomes, and descriptions side-by-side.
 - **Zero Tracking:** 100% static HTML/JS with no external tracking or analytics.
 
-*Last updated: 3 Mar 2026*
+*Last updated: 2 Mar 2026*
