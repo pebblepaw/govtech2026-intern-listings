@@ -1,0 +1,46 @@
+name: Update Job Listings
+
+on:
+  schedule:
+    # Run everyday at 00:00 UTC (08:00 SGT)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows manual trigger from the GitHub UI
+
+permissions:
+  contents: write # Needed to commit changes back to the repo
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Download latest Excel file
+        run: |
+          curl -L -o data.xlsx "https://file.go.gov.sg/govtechinternshipprojects2026.xlsx"
+          
+      - name: Parse Excel to JSON
+        run: node scripts_build_jobs_json.mjs
+
+      - name: Update "Last updated" date in HTML
+        run: |
+          DATE_STR=$(date +"%-d %b %Y")
+          sed -i "s/Last updated: .*/Last updated: $DATE_STR<\/div>/g" index.html
+          sed -i "s/\*Last updated: .*/\*Last updated: $DATE_STR\*/g" README.md
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add jobs.json index.html README.md
+          # Only commit if there are changes
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update job listings from source" && git push)

@@ -1,9 +1,19 @@
 import fs from 'fs';
 import path from 'path';
 import XLSX from 'xlsx';
+import { fileURLToPath } from 'url';
 
-const xlsxPath = '/home/clawd/.openclaw/media/inbound/file_19---40946a94-3852-41c1-9153-b45ea09e85c8.xlsx';
-const outPath = '/home/clawd/.openclaw/workspace/job-browser-repo/jobs.json';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const xlsxPath = path.join(__dirname, 'data.xlsx');
+const outPath = path.join(__dirname, 'jobs.json');
+
+// Check if data.xlsx exists
+if (!fs.existsSync(xlsxPath)) {
+  console.error(`Error: Could not find ${xlsxPath}`);
+  process.exit(1);
+}
 
 const wb = XLSX.readFile(xlsxPath, { cellDates: true });
 
@@ -12,22 +22,15 @@ for (const sheetName of wb.SheetNames) {
   const ws = wb.Sheets[sheetName];
   if (!ws) continue;
 
-  // Get rows as JSON; defval keeps empty cells.
   const rows = XLSX.utils.sheet_to_json(ws, { defval: '' });
 
   for (const r of rows) {
-    // Normalize keys a bit (trim)
     const clean = {};
     for (const [k, v] of Object.entries(r)) {
       const kk = (k || '').toString().trim();
       clean[kk] = (v instanceof Date) ? v.toISOString().slice(0,10) : (typeof v === 'string' ? v.trim() : v);
     }
-
-    // Force Role = sheet name (as per Jing)
     clean['Role'] = sheetName;
-
-    // Some sheets might have merged/blank Division — attempt forward-fill by tracking last seen division.
-    // We'll do a simple pass later; for now just keep what's present.
     all.push(clean);
   }
 }
@@ -42,5 +45,4 @@ for (const r of all) {
 }
 
 fs.writeFileSync(outPath, JSON.stringify(all, null, 2));
-console.log(`Wrote ${all.length} rows -> ${outPath}`);
-console.log(`Roles (sheets): ${wb.SheetNames.length}`);
+console.log(`Successfully generated jobs.json with ${all.length} roles from ${wb.SheetNames.length} sheets.`);
