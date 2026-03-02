@@ -249,10 +249,18 @@
     .btn:hover{border-color:rgba(255,255,255,.28)}
     .panelBody{padding:14px 14px; display:grid; gap:12px; align-items:start; overflow:auto}
     @media(min-width:900px){
-      .panelBody{grid-template-columns: 1fr 1fr; grid-template-areas: "desc learn" "pre learn";}
-      #boxDesc{grid-area:desc}
-      #boxLearn{grid-area:learn}
-      #boxPre{grid-area:pre}
+      /* Make the left column hug content and let the right column span rows without forcing a huge gap */
+      .panelBody{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "desc learn"
+          "pre  learn";
+        grid-auto-rows: max-content;
+        align-items:start;
+      }
+      #boxDesc{grid-area:desc; align-self:start}
+      #boxLearn{grid-area:learn; align-self:start}
+      #boxPre{grid-area:pre;  align-self:start}
     }
 
     .box{
