@@ -60,7 +60,7 @@
 }
 
     .controls{margin-top:12px; display:grid; gap:10px; position:relative; z-index:80}
-    @media(min-width:900px){.controls{grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr}}
+    @media(min-width:900px){.controls{grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr}}
 
     .field{
       border:1px solid var(--border);
@@ -212,7 +212,7 @@
       background:rgba(0,0,0,.55);
       backdrop-filter: blur(6px);
       padding:18px;
-      z-index:50;
+      z-index:20000;
     }
     .drawer.open{display:block}
     .panel{
@@ -229,6 +229,7 @@
     }
     .panelTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;padding:14px 14px;border-bottom:1px solid rgba(255,255,255,.10)}
     .panelTop h2{margin:0;font-size:18px;letter-spacing:-.02em}
+    .panelTop .sub{margin-top:10px}
     .btn{
       border:1px solid rgba(255,255,255,.18);
       background:rgba(0,0,0,.18);
@@ -295,10 +296,6 @@
         <details class="ms" id="msCategory"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
       </div>
 
-      <div class="field">
-        <label>Role</label>
-        <details class="ms" id="msRole"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
-      </div>
 
       <div class="field">
         <label>Division</label>
@@ -381,7 +378,6 @@
     const els = {
       q: document.getElementById('q'),
       msCategory: document.getElementById('msCategory'),
-      msRole: document.getElementById('msRole'),
       msDivision: document.getElementById('msDivision'),
       msLevel: document.getElementById('msLevel'),
       msPeriod: document.getElementById('msPeriod'),
@@ -493,7 +489,7 @@
     }
 
     function refreshSummaries(){
-      [els.msCategory, els.msRole, els.msDivision, els.msLevel, els.msPeriod].forEach(refreshSummary);
+      [els.msCategory, els.msDivision, els.msLevel, els.msPeriod].forEach(refreshSummary);
     }
 
     function jobText(j){
@@ -514,7 +510,6 @@
       return {
         q: norm(els.q.value),
         category: selectedValues(els.msCategory),
-        role: selectedValues(els.msRole),
         division: selectedValues(els.msDivision),
         level: selectedValues(els.msLevel),
         period: selectedValues(els.msPeriod),
@@ -529,7 +524,6 @@
 
       if (showOnlyFavs) list = list.filter(j => favs.has(jobId(j)));
       if (hasAny(f.category)) list = list.filter(j => f.category.includes((j.Category||'')));
-      if (hasAny(f.role)) list = list.filter(j => f.role.includes((j.Role||'')));
       if (hasAny(f.division)) list = list.filter(j => f.division.includes((j.Division||'')));
       if (hasAny(f.level)) list = list.filter(j => f.level.includes((j['Internship Level']||'')));
       if (hasAny(f.period)) list = list.filter(j => f.period.includes((j['Internship Period']||'')));
@@ -549,7 +543,6 @@
         if (showOnlyFavs) list = list.filter(j => favs.has(jobId(j)));
 
         if (exceptKey !== 'category' && hasAny(f.category)) list = list.filter(j => f.category.includes((j.Category||'')));
-        if (exceptKey !== 'role' && hasAny(f.role)) list = list.filter(j => f.role.includes((j.Role||'')));
         if (exceptKey !== 'division' && hasAny(f.division)) list = list.filter(j => f.division.includes((j.Division||'')));
         if (exceptKey !== 'level' && hasAny(f.level)) list = list.filter(j => f.level.includes((j['Internship Level']||'')));
         if (exceptKey !== 'period' && hasAny(f.period)) list = list.filter(j => f.period.includes((j['Internship Period']||'')));
@@ -561,8 +554,6 @@
 
       const countsCategory = new Map();
       for (const j of applyExcept('category')) countsCategory.set(j.Category, (countsCategory.get(j.Category)||0)+1);
-      const countsRole = new Map();
-      for (const j of applyExcept('role')) countsRole.set(j.Role, (countsRole.get(j.Role)||0)+1);
       const countsDiv = new Map();
       for (const j of applyExcept('division')) countsDiv.set(j.Division, (countsDiv.get(j.Division)||0)+1);
       const countsLevel = new Map();
@@ -572,13 +563,11 @@
 
       // rebuild menus with disabled irrelevant options
       const selectedCategory = new Set(f.category);
-      const selectedRole = new Set(f.role);
       const selectedDiv = new Set(f.division);
       const selectedLevel = new Set(f.level);
       const selectedPeriod = new Set(f.period);
 
       fillMulti(els.msCategory, uniq(raw.map(j => j.Category)), selectedCategory, countsCategory);
-      fillMulti(els.msRole, uniq(raw.map(j => j.Role)), selectedRole, countsRole);
       fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), selectedDiv, countsDiv);
       fillMulti(els.msLevel, uniq(raw.map(j => j['Internship Level'])), selectedLevel, countsLevel);
       fillMulti(els.msPeriod, uniq(raw.map(j => j['Internship Period'])), selectedPeriod, countsPeriod);
@@ -811,7 +800,6 @@
 
       // build multi-select menus
       fillMulti(els.msCategory, uniq(raw.map(j => j.Category)), new Set());
-      fillMulti(els.msRole, uniq(raw.map(j => j.Role)), new Set());
       fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), new Set());
       fillMulti(els.msLevel, uniq(raw.map(j => j['Internship Level'])), new Set());
       fillMulti(els.msPeriod, uniq(raw.map(j => j['Internship Period'])), new Set());
