@@ -9,7 +9,6 @@ const __dirname = path.dirname(__filename);
 const xlsxPath = path.join(__dirname, 'data.xlsx');
 const outPath = path.join(__dirname, 'jobs.json');
 
-// Check if data.xlsx exists
 if (!fs.existsSync(xlsxPath)) {
   console.error(`Error: Could not find ${xlsxPath}`);
   process.exit(1);
@@ -18,7 +17,13 @@ if (!fs.existsSync(xlsxPath)) {
 const wb = XLSX.readFile(xlsxPath, { cellDates: true });
 
 const all = [];
+const seen = new Set();
+
 for (const sheetName of wb.SheetNames) {
+  // Skip instruction sheets
+  const sn = sheetName.toLowerCase();
+  if (sn.includes('instruction') || sn === 'instructions') continue;
+
   const ws = wb.Sheets[sheetName];
   if (!ws) continue;
 
@@ -31,6 +36,25 @@ for (const sheetName of wb.SheetNames) {
       clean[kk] = (v instanceof Date) ? v.toISOString().slice(0,10) : (typeof v === 'string' ? v.trim() : v);
     }
     clean['Role'] = sheetName;
+    
+    // Skip empty or instruction-like rows
+    const role = (clean['Role'] || '').toString().trim();
+    const pTitleRaw = (clean['Project Title'] || '').toString().trim();
+    const pTitle = pTitleRaw.toLowerCase();
+    const div = (clean['Division'] || '').toString().trim();
+    const desc = (clean['Project Description'] || '').toString().trim();
+
+    if (!pTitleRaw) continue;
+    if (pTitle.includes('instruction')) continue;
+    if (role.toLowerCase() === 'instructions') continue;
+
+    // drop rows that are basically empty placeholders
+    if (!div && !desc && !(clean['Learning Outcomes from Project']||'').toString().trim() && !(clean['Prerequisites']||'').toString().trim()) continue;
+
+    // Dedup key
+    const uniqueKey = `${role}|${pTitleRaw}|${div}`;
+    if (seen.has(uniqueKey)) continue;
+    seen.add(uniqueKey);
     all.push(clean);
   }
 }
@@ -45,4 +69,4 @@ for (const r of all) {
 }
 
 fs.writeFileSync(outPath, JSON.stringify(all, null, 2));
-console.log(`Successfully generated jobs.json with ${all.length} roles from ${wb.SheetNames.length} sheets.`);
+console.log(`Successfully generated jobs.json with ${all.length} roles.`);
