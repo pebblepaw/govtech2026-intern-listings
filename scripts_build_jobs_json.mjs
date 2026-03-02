@@ -20,7 +20,6 @@ const all = [];
 const seen = new Set();
 
 for (const sheetName of wb.SheetNames) {
-  // Skip instruction sheets
   const sn = sheetName.toLowerCase();
   if (sn.includes('instruction') || sn === 'instructions') continue;
 
@@ -35,12 +34,12 @@ for (const sheetName of wb.SheetNames) {
       const kk = (k || '').toString().trim();
       clean[kk] = (v instanceof Date) ? v.toISOString().slice(0,10) : (typeof v === 'string' ? v.trim() : v);
     }
-    // Sheet name is a category/grouping, NOT the actual role column
-    clean['Category'] = sheetName;
     
-    // Skip empty or instruction-like rows
-    const role = (clean['Role'] || '').toString().trim();
-    const category = (clean['Category'] || '').toString().trim();
+    clean['Category'] = sheetName; // This is the sheet name
+    // Role is already coming from the 'Role' column in the row
+
+    const roleRaw = (clean['Role'] || '').toString().trim();
+    const categoryRaw = clean['Category'];
     const pTitleRaw = (clean['Project Title'] || '').toString().trim();
     const pTitle = pTitleRaw.toLowerCase();
     const div = (clean['Division'] || '').toString().trim();
@@ -48,20 +47,18 @@ for (const sheetName of wb.SheetNames) {
 
     if (!pTitleRaw) continue;
     if (pTitle.includes('instruction')) continue;
-    if (category.toLowerCase() === 'instructions') continue;
+    if (roleRaw.toLowerCase() === 'instructions' || categoryRaw.toLowerCase() === 'instructions') continue;
 
-    // drop rows that are basically empty placeholders
     if (!div && !desc && !(clean['Learning Outcomes from Project']||'').toString().trim() && !(clean['Prerequisites']||'').toString().trim()) continue;
 
-    // Dedup key
-    const uniqueKey = `${category}|${role}|${pTitleRaw}|${div}`;
+    const uniqueKey = `${categoryRaw}|${roleRaw}|${pTitleRaw}|${div}`;
     if (seen.has(uniqueKey)) continue;
     seen.add(uniqueKey);
     all.push(clean);
   }
 }
 
-// Forward-fill Division within each category (sheet)
+// Forward-fill Division within each category
 const lastDivByCat = new Map();
 for (const r of all) {
   const cat = r.Category;

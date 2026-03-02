@@ -53,7 +53,13 @@
 .title p a{color:rgba(56,189,248,.95); text-decoration:none; border-bottom:1px solid rgba(56,189,248,.35)}
 .title p a:hover{border-bottom-color:rgba(56,189,248,.75)}
 
-    .controls{margin-top:12px; display:grid; gap:10px; position:relative; z-index:30}
+/* mobile header chips alignment */
+@media(max-width:640px){
+  .top{justify-content:flex-start}
+  .topChips{align-items:flex-start}
+}
+
+    .controls{margin-top:12px; display:grid; gap:10px; position:relative; z-index:80}
     @media(min-width:900px){.controls{grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr}}
 
     .field{
@@ -101,7 +107,7 @@
       top:calc(100% + 8px);
       left:0;
       right:0;
-      z-index:200;
+      z-index:9999;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(8,12,22,.92);
       backdrop-filter: blur(18px);
@@ -148,7 +154,7 @@
       display:flex; gap:6px; align-items:center;
     }
 
-    .grid{margin-top:14px; display:grid; gap:12px}
+    .grid{margin-top:14px; display:grid; gap:12px; position:relative; z-index:1}
     @media(min-width:900px){.grid{grid-template-columns: repeat(2, minmax(0,1fr));}}
 
     .card{
@@ -162,6 +168,7 @@
       transition: transform .15s ease, border-color .15s ease;
       cursor:pointer;
       position:relative;
+      z-index:1;
     }
     .card:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18)}
     .card.selected{border-color: rgba(56,189,248,.55); background:rgba(56,189,248,.06)}
@@ -271,7 +278,7 @@
         <h1>GovTech 2026 Intern Listings</h1>
         <p>Updated daily from <a href="https://go.gov.sg/govtechinternshipprojects2026" target="_blank" rel="noopener noreferrer">go.gov.sg/govtechinternshipprojects2026</a> • Star favourites • Compare side-by-side.</p>
       </div>
-      <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end; max-width:100%">
+      <div class="topChips" style="display:flex; flex-direction:column; gap:6px; align-items:flex-end; max-width:100%">
         <div class="chip info" id="fileChip">Loaded: jobs.json</div>
         <div class="chip info">Last updated: 3 Mar 2026</div>
       </div>
