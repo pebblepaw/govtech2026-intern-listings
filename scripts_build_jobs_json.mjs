@@ -24,7 +24,7 @@ const CANON_LEVELS = [
   'Open to all levels',
   'Undergraduate',
   'Post-Diploma',
-  'Polytechnic student',
+  'Polytechnic',
   'Post-A-level',
 ];
 
@@ -43,7 +43,7 @@ function normLevelToken(t) {
   if (x.includes('open to all')) return 'Open to all levels';
   if (x.includes('undergrad')) return 'Undergraduate';
   if (x.includes('post-diploma') || x.includes('post diploma')) return 'Post-Diploma';
-  if (x.includes('polytechnic')) return 'Polytechnic student';
+  if (x.includes('polytechnic')) return 'Polytechnic';
   if (x.includes('post-a-level') || x.includes('post a-level') || x.includes('post a level')) return 'Post-A-level';
 
   // fallback titlecase-ish
@@ -77,8 +77,8 @@ function durationTags(periodStr) {
     if (m) tags.add(`${m[1]} months`);
     else tags.add(t);
   }
-  // keep in numeric-ish order
-  const order = ['3 months','6 months','12 months'];
+  // keep in numeric-ish order (include 9 months in case it appears later)
+  const order = ['3 months','6 months','9 months','12 months'];
   const out = [];
   for (const o of order) if (tags.has(o)) out.push(o);
   for (const t of tags) if (!order.includes(t)) out.push(t);

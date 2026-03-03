@@ -438,6 +438,15 @@
     function norm(s){ return (s||'').toString().toLowerCase().trim(); }
     function uniq(arr){ return [...new Set(arr.filter(Boolean))].sort((a,b)=>a.localeCompare(b)); }
 
+    function sortDurations(vals){
+      const order = ['3 months','6 months','9 months','12 months'];
+      const set = new Set(vals.filter(Boolean));
+      const out = [];
+      for (const o of order) if (set.has(o)) out.push(o);
+      for (const v of [...set].sort((a,b)=>a.localeCompare(b))) if (!order.includes(v)) out.push(v);
+      return out;
+    }
+
     function jobId(j){
       // stable-ish unique key
       return [j.Role, j['Project Title'], j.Division, j['Internship Level']].map(x => (x||'').toString().trim()).join(' | ');
@@ -605,7 +614,7 @@
       fillMulti(els.msCategory, uniq(raw.map(j => j.Category)), selectedCategory, countsCategory);
       fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), selectedDiv, countsDiv);
       fillMulti(els.msLevel, uniq(raw.flatMap(j => j.LevelTags || [])), selectedLevel, countsLevel);
-      fillMulti(els.msPeriod, uniq(raw.flatMap(j => j.DurationTags || [])), selectedPeriod, countsPeriod);
+      fillMulti(els.msPeriod, sortDurations(uniq(raw.flatMap(j => j.DurationTags || []))), selectedPeriod, countsPeriod);
       fillMulti(els.msLocation, uniq(raw.flatMap(j => j.LocationTags || [(j['Work Location']||'')].filter(Boolean))), selectedLocation, countsLocation);
 
       refreshSummaries();
@@ -838,7 +847,7 @@
       fillMulti(els.msCategory, uniq(raw.map(j => j.Category)), new Set());
       fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), new Set());
       fillMulti(els.msLevel, uniq(raw.flatMap(j => j.LevelTags || [])), new Set());
-      fillMulti(els.msPeriod, uniq(raw.flatMap(j => j.DurationTags || [])), new Set());
+      fillMulti(els.msPeriod, sortDurations(uniq(raw.flatMap(j => j.DurationTags || []))), new Set());
       fillMulti(els.msLocation, uniq(raw.flatMap(j => j.LocationTags || [(j['Work Location']||'')].filter(Boolean))), new Set());
       refreshSummaries();
 
