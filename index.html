@@ -349,6 +349,7 @@
           <span class="chip good" id="shown">0 shown</span>
           <span class="chip btn" id="chipFavs">★ Starred only</span>
           <span class="chip btn" id="chipCompare">⇄ Compare (0)</span>
+          <span class="chip btn" id="chipClear">Clear all</span>
           <span class="chip" id="hint">Tip: press <span class="mono">/</span> to search • <span class="mono">Esc</span> to close</span>
         </div>
       </aside>
@@ -422,6 +423,7 @@
       shown: document.getElementById('shown'),
       chipFavs: document.getElementById('chipFavs'),
       chipCompare: document.getElementById('chipCompare'),
+      chipClear: document.getElementById('chipClear'),
 
       drawer: document.getElementById('drawer'),
       closeBtn: document.getElementById('closeBtn'),
@@ -847,6 +849,22 @@
     });
 
     els.chipCompare.addEventListener('click', () => openCompare());
+
+    function clearAllFilters(){
+      // clear search
+      els.q.value = '';
+
+      // clear multi-selects
+      document.querySelectorAll('details.ms .msMenu input[type=checkbox]').forEach(cb => cb.checked = false);
+
+      // clear starred-only
+      showOnlyFavs = false;
+      els.chipFavs.classList.remove('active');
+
+      applyFiltersAndRefresh();
+    }
+
+    els.chipClear.addEventListener('click', () => clearAllFilters());
 
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') { closeDrawer(); closeCompare(); }

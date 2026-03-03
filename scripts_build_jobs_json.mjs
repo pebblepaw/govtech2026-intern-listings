@@ -85,44 +85,74 @@ function durationTags(periodStr) {
   return out;
 }
 
-// Location mapping (curated by Jing). Key = raw Work Location string, Value = display/filter tags.
-// If value contains multiple locations, they are delimited by semicolons.
-const LOCATION_MAP = {
-  'Agency Site': 'Agency Site',
-  'Hybrid - [Home Base] Mapletree Business City, Block 10, Level 10 (S117438) and Punggol Digital District': 'Home Base; Mapletree Business City; Punggol Digital District',
-  'Jurong Westgate': 'MSF (Westgate)',
-  'Mapletree Business City Block 10/Punggol Digital District': 'Mapletree Business City; Punggol Digital District',
-  'Mapletree Business City, Block 10, Level 10 (S117438)': 'Mapletree Business City',
-  'Mapletree Business City/Punggol Digital District': 'Mapletree Business City; Punggol Digital District',
-  'MOE Buona Vista': 'MOE (Buona Vista)',
-  'MOE HQ (Balestier)': 'MOE HQ (Balestier)',
-  'MSF at Westgate': 'MSF (Westgate)',
-  'MTI Treasury': 'MTI Treasury',
-  'National Council of Social Service, 170 Ghim Moh Road': 'NCSS (Ghim Moh Road)',
-  'Non-Headquarter Service Centre MOM 2 (S339946)': 'MOM2 (Bendemeer)',
-  'Non-Headquarters MOE1 (S329927)': 'MOE1 (Balestier)',
-  'Non-Headquarters MOM 1 (S059764)': 'MOM1 (Havelock)',
-  'Non-Headquarters SEAB (S339626)': 'SEAB (Geylang Bahru)',
-  'Non-HQ MOE1': 'MOE1 (Balestier)',
-  'Others': 'Others',
-  'Paya Lebar Quarter -PLQ 2 (S408533)': 'PLQ2',
-  'Punggol Digital District': 'Punggol Digital District',
-  'The Treasury, 100 High Street, #03-01, Singapore 179434': 'MTI Treasury',
-  'Ulu Pandan Community Building 170 Ghim Moh Road #01-02 S279621': 'NCSS (Ghim Moh Road)',
-};
+// Location mapping (curated by Jing). Matching is done by `includes` rules (NOT comma splitting).
+// Rules can intentionally match multiple times (e.g., "Home Base" + "MapleTree" + "Punggol") to produce multi-location tags.
+const LOCATION_RULES = [
+  { includes: 'Agency Site', mapping: 'Agency Site' },
+  { includes: 'Home Base', mapping: 'Home Base' },
+  { includes: 'MapleTree', mapping: 'Mapletree Business City' },
+
+  { includes: 'MOE Buona Vista', mapping: 'MOE (Buona Vista)' },
+  { includes: 'MOE HQ (Balestier)', mapping: 'MOE HQ (Balestier)' },
+  { includes: 'S329927', mapping: 'MOE1 (Balestier)' },
+  { includes: 'Non-Headquarters MOE1', mapping: 'MOE1 (Balestier)' },
+  { includes: 'Non-HQ MOE1', mapping: 'MOE1 (Balestier)' },
+
+  { includes: 'S059764', mapping: 'MOM1 (Havelock)' },
+  { includes: 'Non-Headquarters MOM 1', mapping: 'MOM1 (Havelock)' },
+
+  { includes: 'S339946', mapping: 'MOM2 (Bendemeer)' },
+  { includes: 'Non-Headquarter Service Centre MOM 2', mapping: 'MOM2 (Bendemeer)' },
+
+  { includes: 'MSF at Westgate', mapping: 'MSF (Westgate)' },
+  { includes: 'Westgate', mapping: 'MSF (Westgate)' },
+
+  { includes: 'MTI Treasury', mapping: 'MTI Treasury' },
+  { includes: '179434', mapping: 'MTI Treasury' },
+  { includes: 'Treasury', mapping: 'MTI Treasury' },
+
+  { includes: '170 Ghim Moh Road', mapping: 'NCSS (Ghim Moh Road)' },
+  { includes: 'National Council of Social Service', mapping: 'NCSS (Ghim Moh Road)' },
+  { includes: 'S279621', mapping: 'NCSS (Ghim Moh Road)' },
+  { includes: 'Ulu Pandan Community Building', mapping: 'NCSS (Ghim Moh Road)' },
+
+  { includes: 'Others', mapping: 'Others' },
+
+  { includes: 'S408533', mapping: 'PLQ2' },
+  { includes: 'PLC2', mapping: 'PLQ2' },
+  { includes: 'Paya Lebar Quarter', mapping: 'PLQ2' },
+
+  { includes: 'Punggol Digital District', mapping: 'Punggol Digital District' },
+
+  { includes: 'S339626', mapping: 'SEAB (Geylang Bahru)' },
+  { includes: 'Non-Headquarters SEAB', mapping: 'SEAB (Geylang Bahru)' },
+];
 
 function locationTags(locStr) {
   const raw = (locStr || '').toString().trim();
   if (!raw) return [];
 
-  // IMPORTANT: do NOT split raw by commas; addresses contain commas.
-  const mapped = LOCATION_MAP[raw];
-  const out = (mapped || raw)
-    .split(';')
-    .map(x => x.trim())
-    .filter(Boolean);
+  const rawLower = raw.toLowerCase();
+  const tags = new Set();
 
-  return [...new Set(out)];
+  for (const r of LOCATION_RULES) {
+    const inc = (r.includes ?? '').toString().trim();
+    if (!inc) continue;
+    if (rawLower.includes(inc.toLowerCase())) {
+      for (const t of (r.mapping || '').split(';')) {
+        const tt = t.trim();
+        if (tt) tags.add(tt);
+      }
+    }
+  }
+
+  // Fallback: if nothing matched, keep raw string as-is so it still appears in the filter.
+  if (tags.size === 0) tags.add(raw);
+
+  // If we only matched the raw string itself (e.g., "Agency Site" -> "Agency Site"), treat as known.
+  // (Unknowns are cases where no rule matched and we fell back.)
+
+  return [...tags];
 }
 
 for (const sheetName of wb.SheetNames) {
@@ -160,8 +190,11 @@ for (const sheetName of wb.SheetNames) {
     clean['LevelTags'] = levelTags(clean['Internship Level']);
     clean['DurationTags'] = durationTags(clean['Internship Period']);
     const wl = (clean['Work Location'] || '').toString().trim();
-    if (wl && !LOCATION_MAP[wl]) unknownLocations.add(wl);
-    clean['LocationTags'] = locationTags(wl);
+    const before = locationTags(wl);
+    // Mark unknown only if we fell back AND there isn't an explicit exact-match rule.
+    const exactRule = LOCATION_RULES.some(r => ((r.includes ?? '').toString().trim().toLowerCase() === (wl||'').toString().trim().toLowerCase()));
+    if (wl && before.length === 1 && before[0] === wl && !exactRule) unknownLocations.add(wl);
+    clean['LocationTags'] = before;
 
     const uniqueKey = `${categoryRaw}|${roleRaw}|${pTitleRaw}|${div}`;
     if (seen.has(uniqueKey)) continue;
