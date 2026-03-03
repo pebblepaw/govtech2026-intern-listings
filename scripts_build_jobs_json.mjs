@@ -18,6 +18,7 @@ const wb = XLSX.readFile(xlsxPath, { cellDates: true });
 
 const all = [];
 const seen = new Set();
+const unknownLocations = new Set();
 
 const CANON_LEVELS = [
   'Open to all levels',
@@ -84,10 +85,44 @@ function durationTags(periodStr) {
   return out;
 }
 
+// Location mapping (curated by Jing). Key = raw Work Location string, Value = display/filter tags.
+// If value contains multiple locations, they are delimited by semicolons.
+const LOCATION_MAP = {
+  'Agency Site': 'Agency Site',
+  'Hybrid - [Home Base] Mapletree Business City, Block 10, Level 10 (S117438) and Punggol Digital District': 'Home Base; Mapletree Business City; Punggol Digital District',
+  'Jurong Westgate': 'MSF (Westgate)',
+  'Mapletree Business City Block 10/Punggol Digital District': 'Mapletree Business City; Punggol Digital District',
+  'Mapletree Business City, Block 10, Level 10 (S117438)': 'Mapletree Business City',
+  'Mapletree Business City/Punggol Digital District': 'Mapletree Business City; Punggol Digital District',
+  'MOE Buona Vista': 'MOE (Buona Vista)',
+  'MOE HQ (Balestier)': 'MOE HQ (Balestier)',
+  'MSF at Westgate': 'MSF (Westgate)',
+  'MTI Treasury': 'MTI Treasury',
+  'National Council of Social Service, 170 Ghim Moh Road': 'NCSS (Ghim Moh Road)',
+  'Non-Headquarter Service Centre MOM 2 (S339946)': 'MOM2 (Bendemeer)',
+  'Non-Headquarters MOE1 (S329927)': 'MOE1 (Balestier)',
+  'Non-Headquarters MOM 1 (S059764)': 'MOM1 (Havelock)',
+  'Non-Headquarters SEAB (S339626)': 'SEAB (Geylang Bahru)',
+  'Non-HQ MOE1': 'MOE1 (Balestier)',
+  'Others': 'Others',
+  'Paya Lebar Quarter -PLQ 2 (S408533)': 'PLQ2',
+  'Punggol Digital District': 'Punggol Digital District',
+  'The Treasury, 100 High Street, #03-01, Singapore 179434': 'MTI Treasury',
+  'Ulu Pandan Community Building 170 Ghim Moh Road #01-02 S279621': 'NCSS (Ghim Moh Road)',
+};
+
 function locationTags(locStr) {
-  // currently locations look like single values, but just in case
-  const raw = splitMulti(locStr).length ? splitMulti(locStr) : [(locStr || '').toString().trim()].filter(Boolean);
-  return [...new Set(raw)];
+  const raw = (locStr || '').toString().trim();
+  if (!raw) return [];
+
+  // IMPORTANT: do NOT split raw by commas; addresses contain commas.
+  const mapped = LOCATION_MAP[raw];
+  const out = (mapped || raw)
+    .split(';')
+    .map(x => x.trim())
+    .filter(Boolean);
+
+  return [...new Set(out)];
 }
 
 for (const sheetName of wb.SheetNames) {
@@ -124,7 +159,9 @@ for (const sheetName of wb.SheetNames) {
     // One-hot-ish tags for clean filtering
     clean['LevelTags'] = levelTags(clean['Internship Level']);
     clean['DurationTags'] = durationTags(clean['Internship Period']);
-    clean['LocationTags'] = locationTags(clean['Work Location']);
+    const wl = (clean['Work Location'] || '').toString().trim();
+    if (wl && !LOCATION_MAP[wl]) unknownLocations.add(wl);
+    clean['LocationTags'] = locationTags(wl);
 
     const uniqueKey = `${categoryRaw}|${roleRaw}|${pTitleRaw}|${div}`;
     if (seen.has(uniqueKey)) continue;
@@ -144,3 +181,7 @@ for (const r of all) {
 
 fs.writeFileSync(outPath, JSON.stringify(all, null, 2));
 console.log(`Successfully generated jobs.json with ${all.length} roles.`);
+if (unknownLocations.size) {
+  console.log(`Unknown Work Location values not in mapping (${unknownLocations.size}):`);
+  for (const x of [...unknownLocations].sort()) console.log(' - ' + x);
+}
