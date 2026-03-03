@@ -887,6 +887,18 @@
 
       // close other dropdowns when one opens + lift the active field above siblings (mobile)
       document.querySelectorAll('details.ms').forEach(d => {
+        // IMPORTANT: on fast clicks between filters, close others *before* the new one opens.
+        const summary = d.querySelector('summary');
+        if (summary) {
+          summary.addEventListener('pointerdown', () => {
+            // if we're about to open this dropdown, close all others immediately
+            if (!d.open) {
+              document.querySelectorAll('details.ms').forEach(o => { if (o !== d) o.open = false; });
+              document.querySelectorAll('.field.open').forEach(f => f.classList.remove('open'));
+            }
+          }, { capture: true });
+        }
+
         d.addEventListener('toggle', () => {
           // clear all field lifts
           document.querySelectorAll('.field.open').forEach(f => f.classList.remove('open'));
