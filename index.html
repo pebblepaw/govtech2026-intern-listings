@@ -60,7 +60,7 @@
 }
 
     .controls{margin-top:12px; display:grid; gap:10px; position:relative; z-index:80}
-    @media(min-width:900px){.controls{grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr}}
+    @media(min-width:900px){.controls{grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr}}
 
     .field{
       border:1px solid var(--border);
@@ -325,6 +325,11 @@
         <label>Duration</label>
         <details class="ms" id="msPeriod"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
       </div>
+
+      <div class="field">
+        <label>Location</label>
+        <details class="ms" id="msLocation"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
+      </div>
     </section>
 
     <div class="meta">
@@ -395,6 +400,7 @@
       msDivision: document.getElementById('msDivision'),
       msLevel: document.getElementById('msLevel'),
       msPeriod: document.getElementById('msPeriod'),
+      msLocation: document.getElementById('msLocation'),
       grid: document.getElementById('grid'),
       count: document.getElementById('count'),
       shown: document.getElementById('shown'),
@@ -503,20 +509,21 @@
     }
 
     function refreshSummaries(){
-      [els.msCategory, els.msDivision, els.msLevel, els.msPeriod].forEach(refreshSummary);
+      [els.msCategory, els.msDivision, els.msLevel, els.msPeriod, els.msLocation].forEach(refreshSummary);
     }
 
     function jobText(j){
       return [
+        j.Category,
         j.Role,
         j.Division,
-        j['Internship Level'],
-        j['Internship Period'],
+        ...(j.LevelTags || [j['Internship Level']]),
+        ...(j.DurationTags || [j['Internship Period']]),
+        ...(j.LocationTags || [j['Work Location']]),
         j['Project Title'],
         j['Project Description'],
         j.Prerequisites,
         j['Learning Outcomes from Project'],
-        j['Work Location'],
       ].filter(Boolean).join(' | ');
     }
 
@@ -527,10 +534,17 @@
         division: selectedValues(els.msDivision),
         level: selectedValues(els.msLevel),
         period: selectedValues(els.msPeriod),
+        location: selectedValues(els.msLocation),
       };
     }
 
     function hasAny(arr){ return Array.isArray(arr) && arr.length > 0; }
+    function intersects(selected, values){
+      if (!hasAny(selected)) return true;
+      const vs = Array.isArray(values) ? values : [values];
+      for (const v of vs) if (selected.includes(v)) return true;
+      return false;
+    }
 
     function applyFilters(){
       const f = currentFilters();
@@ -539,8 +553,11 @@
       if (showOnlyFavs) list = list.filter(j => favs.has(jobId(j)));
       if (hasAny(f.category)) list = list.filter(j => f.category.includes((j.Category||'')));
       if (hasAny(f.division)) list = list.filter(j => f.division.includes((j.Division||'')));
-      if (hasAny(f.level)) list = list.filter(j => f.level.includes((j['Internship Level']||'')));
-      if (hasAny(f.period)) list = list.filter(j => f.period.includes((j['Internship Period']||'')));
+
+      // level/duration/location are tag arrays
+      if (hasAny(f.level)) list = list.filter(j => intersects(f.level, j.LevelTags || []));
+      if (hasAny(f.period)) list = list.filter(j => intersects(f.period, j.DurationTags || []));
+      if (hasAny(f.location)) list = list.filter(j => intersects(f.location, j.LocationTags || j['Work Location'] || ''));
 
       if (f.q) list = list.filter(j => jobText(j).toLowerCase().includes(f.q));
 
@@ -558,8 +575,9 @@
 
         if (exceptKey !== 'category' && hasAny(f.category)) list = list.filter(j => f.category.includes((j.Category||'')));
         if (exceptKey !== 'division' && hasAny(f.division)) list = list.filter(j => f.division.includes((j.Division||'')));
-        if (exceptKey !== 'level' && hasAny(f.level)) list = list.filter(j => f.level.includes((j['Internship Level']||'')));
-        if (exceptKey !== 'period' && hasAny(f.period)) list = list.filter(j => f.period.includes((j['Internship Period']||'')));
+        if (exceptKey !== 'level' && hasAny(f.level)) list = list.filter(j => intersects(f.level, j.LevelTags || []));
+        if (exceptKey !== 'period' && hasAny(f.period)) list = list.filter(j => intersects(f.period, j.DurationTags || []));
+        if (exceptKey !== 'location' && hasAny(f.location)) list = list.filter(j => intersects(f.location, j.LocationTags || j['Work Location'] || ''));
         if (f.q) list = list.filter(j => jobText(j).toLowerCase().includes(f.q));
         return list;
       }
@@ -571,20 +589,24 @@
       const countsDiv = new Map();
       for (const j of applyExcept('division')) countsDiv.set(j.Division, (countsDiv.get(j.Division)||0)+1);
       const countsLevel = new Map();
-      for (const j of applyExcept('level')) countsLevel.set(j['Internship Level'], (countsLevel.get(j['Internship Level'])||0)+1);
+      for (const j of applyExcept('level')) for (const t of (j.LevelTags || [])) countsLevel.set(t, (countsLevel.get(t)||0)+1);
       const countsPeriod = new Map();
-      for (const j of applyExcept('period')) countsPeriod.set(j['Internship Period'], (countsPeriod.get(j['Internship Period'])||0)+1);
+      for (const j of applyExcept('period')) for (const t of (j.DurationTags || [])) countsPeriod.set(t, (countsPeriod.get(t)||0)+1);
+      const countsLocation = new Map();
+      for (const j of applyExcept('location')) for (const t of (j.LocationTags || [(j['Work Location']||'')].filter(Boolean))) countsLocation.set(t, (countsLocation.get(t)||0)+1);
 
       // rebuild menus with disabled irrelevant options
       const selectedCategory = new Set(f.category);
       const selectedDiv = new Set(f.division);
       const selectedLevel = new Set(f.level);
       const selectedPeriod = new Set(f.period);
+      const selectedLocation = new Set(f.location);
 
       fillMulti(els.msCategory, uniq(raw.map(j => j.Category)), selectedCategory, countsCategory);
       fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), selectedDiv, countsDiv);
-      fillMulti(els.msLevel, uniq(raw.map(j => j['Internship Level'])), selectedLevel, countsLevel);
-      fillMulti(els.msPeriod, uniq(raw.map(j => j['Internship Period'])), selectedPeriod, countsPeriod);
+      fillMulti(els.msLevel, uniq(raw.flatMap(j => j.LevelTags || [])), selectedLevel, countsLevel);
+      fillMulti(els.msPeriod, uniq(raw.flatMap(j => j.DurationTags || [])), selectedPeriod, countsPeriod);
+      fillMulti(els.msLocation, uniq(raw.flatMap(j => j.LocationTags || [(j['Work Location']||'')].filter(Boolean))), selectedLocation, countsLocation);
 
       refreshSummaries();
 
@@ -815,8 +837,9 @@
       // build multi-select menus
       fillMulti(els.msCategory, uniq(raw.map(j => j.Category)), new Set());
       fillMulti(els.msDivision, uniq(raw.map(j => j.Division)), new Set());
-      fillMulti(els.msLevel, uniq(raw.map(j => j['Internship Level'])), new Set());
-      fillMulti(els.msPeriod, uniq(raw.map(j => j['Internship Period'])), new Set());
+      fillMulti(els.msLevel, uniq(raw.flatMap(j => j.LevelTags || [])), new Set());
+      fillMulti(els.msPeriod, uniq(raw.flatMap(j => j.DurationTags || [])), new Set());
+      fillMulti(els.msLocation, uniq(raw.flatMap(j => j.LocationTags || [(j['Work Location']||'')].filter(Boolean))), new Set());
       refreshSummaries();
 
       // close other dropdowns when one opens + lift the active field above siblings (mobile)
