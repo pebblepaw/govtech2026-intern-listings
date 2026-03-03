@@ -2,7 +2,9 @@ name: Nightly Data Crawl
 
 on:
   schedule:
-    # 13:00 UTC is 21:00 SGT (9 PM)
+    # 12:30 UTC = 20:30 SGT (8:30 PM)
+    - cron: '30 12 * * *'
+    # 13:00 UTC = 21:00 SGT (9:00 PM)
     - cron: '0 13 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
