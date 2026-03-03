@@ -59,8 +59,15 @@
   .topChips{align-items:flex-start}
 }
 
-    .controls{margin-top:12px; display:grid; gap:10px; position:relative; z-index:80}
-    @media(min-width:900px){.controls{grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr}}
+    .shell{margin-top:12px}
+    @media(min-width:900px){
+      .shell{display:grid; grid-template-columns: 360px 1fr; gap:14px; align-items:start}
+      .side{position:sticky; top:14px; align-self:start}
+    }
+
+    .controls{display:grid; gap:10px; position:relative; z-index:80}
+    /* Mobile: stacked by default (1 column). Desktop: still 1 column inside the left panel. */
+    @media(min-width:900px){.controls{grid-template-columns: 1fr}}
 
     .field{
       border:1px solid var(--border);
@@ -137,6 +144,9 @@
       color:var(--dim);
       font-size:13px;
     }
+    @media(min-width:900px){
+      .meta{margin-top:12px}
+    }
     .chip{
       font-family:"Fira Code", ui-monospace, Menlo, Consolas, monospace;
       font-size:12px;
@@ -161,7 +171,7 @@
       display:flex; gap:6px; align-items:center;
     }
 
-    .grid{margin-top:14px; display:grid; gap:12px; position:relative; z-index:1}
+    .grid{display:grid; gap:12px; position:relative; z-index:1}
     @media(min-width:900px){.grid{grid-template-columns: repeat(2, minmax(0,1fr));}}
 
     .card{
@@ -299,48 +309,53 @@
       </div>
     </header>
 
-    <section class="controls">
-      <div class="field">
-        <label>Search</label>
-        <input id="q" type="search" placeholder="project title, keywords..." />
-      </div>
+    <div class="shell">
+      <aside class="side">
+        <section class="controls">
+          <div class="field">
+            <label>Search</label>
+            <input id="q" type="search" placeholder="project title, keywords..." />
+          </div>
 
-      <div class="field">
-        <label>Category</label>
-        <details class="ms" id="msCategory"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
-      </div>
+          <div class="field">
+            <label>Category</label>
+            <details class="ms" id="msCategory"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
+          </div>
 
+          <div class="field">
+            <label>Division</label>
+            <details class="ms" id="msDivision"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
+          </div>
 
-      <div class="field">
-        <label>Division</label>
-        <details class="ms" id="msDivision"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
-      </div>
+          <div class="field">
+            <label>Level</label>
+            <details class="ms" id="msLevel"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
+          </div>
 
-      <div class="field">
-        <label>Level</label>
-        <details class="ms" id="msLevel"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
-      </div>
+          <div class="field">
+            <label>Duration</label>
+            <details class="ms" id="msPeriod"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
+          </div>
 
-      <div class="field">
-        <label>Duration</label>
-        <details class="ms" id="msPeriod"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
-      </div>
+          <div class="field">
+            <label>Location</label>
+            <details class="ms" id="msLocation"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
+          </div>
+        </section>
 
-      <div class="field">
-        <label>Location</label>
-        <details class="ms" id="msLocation"><summary><span class="msText">All</span><span class="msCount"></span></summary><div class="msMenu"></div></details>
-      </div>
-    </section>
+        <div class="meta">
+          <span class="chip" id="count">0 jobs</span>
+          <span class="chip good" id="shown">0 shown</span>
+          <span class="chip btn" id="chipFavs">★ Starred only</span>
+          <span class="chip btn" id="chipCompare">⇄ Compare (0)</span>
+          <span class="chip" id="hint">Tip: press <span class="mono">/</span> to search • <span class="mono">Esc</span> to close</span>
+        </div>
+      </aside>
 
-    <div class="meta">
-      <span class="chip" id="count">0 jobs</span>
-      <span class="chip good" id="shown">0 shown</span>
-      <span class="chip btn" id="chipFavs">★ Starred only</span>
-      <span class="chip btn" id="chipCompare">⇄ Compare (0)</span>
-      <span class="chip" id="hint">Tip: press <span class="mono">/</span> to search • <span class="mono">Esc</span> to close</span>
+      <main class="main">
+        <section class="grid" id="grid"></section>
+      </main>
     </div>
-
-    <section class="grid" id="grid"></section>
 
     <div class="footer">Built by Pebble • static HTML • no tracking</div>
   </div>
