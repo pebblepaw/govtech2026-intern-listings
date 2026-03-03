@@ -16,4 +16,4 @@ A lightweight, fast, client-side static web application to browse GovTech's 2026
 - **Compare (latest 3):** Pick jobs to compare; selecting a 4th drops the oldest so you always compare the latest 3.
 - **Comfortable reading:** Detail view with scroll for long content.
 - **Zero tracking:** Static HTML/JS, no analytics.
-- **Data Cleaning Pipeline** Custom regex mapping and one-hot encoding for Locations, Levels and Duration. 
+- **Data Cleaning Pipeline:** Custom regex mapping and one-hot encoding for Locations, Levels and Duration. 
