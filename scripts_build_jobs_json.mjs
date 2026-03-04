@@ -94,9 +94,11 @@ const LOCATION_RULES = [
 
   { includes: 'MOE Buona Vista', mapping: 'MOE (Buona Vista)' },
   { includes: 'MOE HQ (Balestier)', mapping: 'MOE HQ (Balestier)' },
+  { includes: 'MOE Headquarters', mapping: 'MOE (Balestier)' },
   { includes: 'S329927', mapping: 'MOE1 (Balestier)' },
   { includes: 'Non-Headquarters MOE1', mapping: 'MOE1 (Balestier)' },
   { includes: 'Non-HQ MOE1', mapping: 'MOE1 (Balestier)' },
+  { includes: 'MOE1', mapping: 'MOE1 (Balestier)' },
 
   { includes: 'S059764', mapping: 'MOM1 (Havelock)' },
   { includes: 'Non-Headquarters MOM 1', mapping: 'MOM1 (Havelock)' },
@@ -168,6 +170,8 @@ for (const sheetName of wb.SheetNames) {
     const clean = {};
     for (const [k, v] of Object.entries(r)) {
       const kk = (k || '').toString().trim();
+      // Drop XLSX "__EMPTY" columns (blank headers) to avoid polluting jobs.json.
+      if (!kk || kk.startsWith('__EMPTY')) continue;
       clean[kk] = (v instanceof Date) ? v.toISOString().slice(0,10) : (typeof v === 'string' ? v.trim() : v);
     }
 
@@ -189,12 +193,16 @@ for (const sheetName of wb.SheetNames) {
     // One-hot-ish tags for clean filtering
     clean['LevelTags'] = levelTags(clean['Internship Level']);
     clean['DurationTags'] = durationTags(clean['Internship Period']);
-    const wl = (clean['Work Location'] || '').toString().trim();
+    // Work Location field is inconsistent across sheets (sometimes "Work Location (FormSG)").
+    const wl = (
+      (clean['Work Location'] || clean['Work Location (FormSG)'] || '').toString().trim()
+    );
     const before = locationTags(wl);
     // Mark unknown only if we fell back AND there isn't an explicit exact-match rule.
     const exactRule = LOCATION_RULES.some(r => ((r.includes ?? '').toString().trim().toLowerCase() === (wl||'').toString().trim().toLowerCase()));
     if (wl && before.length === 1 && before[0] === wl && !exactRule) unknownLocations.add(wl);
-    clean['LocationTags'] = before;
+    // Rule: if LocationTags ends up empty for any reason, fall back to the raw location string.
+    clean['LocationTags'] = (before && before.length) ? before : (wl ? [wl] : []);
 
     const uniqueKey = `${categoryRaw}|${roleRaw}|${pTitleRaw}|${div}`;
     if (seen.has(uniqueKey)) continue;
