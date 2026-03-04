@@ -235,7 +235,7 @@
   {
     "Role": "Tech – Software Engineer : Usability and Accessibility [GDPA]",
     "Internship Level": "Undergraduate;Polytechnic student",
-    "Internship Period": "12 months",
+    "Internship Period": "3 months; 6 months; 12 months",
     "Division": "(Apps) Digital Society Products",
     "Project Title": "Usability and Accessibility",
     "Project Description": "Our U&A initiative enhances the usability and accessibility of government digital services. By developing specialized tools, leading professional workshops, and creating educational resources, we champion a “shift-left” approach. Join us to drive systemic change and ensure inclusive design is integrated from day one.",
@@ -248,6 +248,8 @@
       "Polytechnic"
     ],
     "DurationTags": [
+      "3 months",
+      "6 months",
       "12 months"
     ],
     "LocationTags": [
@@ -3652,6 +3654,29 @@
     ],
     "LocationTags": [
       "Punggol Digital District"
+    ]
+  },
+  {
+    "Role": "Tech – Product Manager : Innovation in Education through Human-Centred Design & Digital Experimentation",
+    "Internship Level": "Undergraduate, Polytechnic (final year)",
+    "Internship Period": "6 months; 12 months",
+    "Division": "MOE Digital Excellence and Products Division (DXD)",
+    "Project Title": "Innovation in Education through Human-Centred Design & Digital Experimentation",
+    "Project Description": "The intern will join the Digital Innovation & Ventures Accelerator (DIVA) under the Digital Excellence & Products Division (DXD), Ministry of Education.\r\nThis role supports innovation projects that apply human-centred design, emerging technologies, and agile experimentation to improve teaching, learning, and administrative workflows across schools and HQ divisions.\r\nKey responsibilities include:\r\nDesign & Discovery\r\n●\tPartner with HQ divisions to reframe problem statements and map current (“as-is”) versus future (“to-be”) workflows\r\n\r\n●\tConduct user research (interviews, journey mapping, persona development) with educators and policy teams\r\n\r\n●\tDesign and test prototypes, mockups, and lightweight digital tools\r\n\r\n●\tSupport facilitation of advisory workshops, design sprints, and co-creation sessions\r\n\r\nProduct Pilots & Implementation\r\n●\tSupport piloting and refinement of proof-of-concept solutions\r\n\r\n●\tTrack project metrics (usability feedback, efficiency gains, stakeholder satisfaction)\r\n\r\n●\tCoordinate project logistics and documentation\r\n\r\nInnovation Culture Building\r\n●\tAssist in organising hackathons, demo days, workshops, and community engagements\r\n\r\n●\tSupport outreach, participant recruitment, and stakeholder communications\r\n\r\n●\tCo-create toolkits, templates, and one-pagers to empower grassroots innovation\r\n\r\nStakeholder Engagement & Capacity Building\r\n●\tWork with educators, school leaders, and HQ officers to gather requirements and feedback\r\n\r\n●\tSupport change management efforts (communications, training reminders, adoption surveys)\r\n\r\n●\tDevelop and update training materials and knowledge artefacts",
+    "Learning Outcomes from Project": "By the end of the internship, the intern will:\r\n1.\tGain hands-on experience in human-centred design (persona development, journey mapping, co-creation facilitation).\r\n\r\n2.\tLearn to scope, prototype, and test digital solutions within public sector constraints.\r\n\r\n3.\tDevelop stakeholder engagement and change management skills across schools and HQ divisions.\r\n\r\n4.\tUnderstand innovation frameworks used in public service (design sprints, rapid prototyping, problem-framing).\r\n\r\n5.\tBuild experience supporting pilots and scaling innovation initiatives in a large government organisation.",
+    "Prerequisites": "●\tStrong written and verbal communication skills\r\n●\tOrganised and detail-oriented; able to coordinate across multiple stakeholders\r\n●\tComfortable with collaboration tools (Google Workspace, Miro, Canva or equivalent)\r\n●\tBasic analytical skills for data collection and synthesis\r\n\r\nStrongly Preferred:\r\n●\tFamiliarity with prototyping tools (e.g., Figma)\r\n●\tExposure to UX research methods or design thinking frameworks\r\n●\tExperience supporting workshops, hackathons, or community engagements",
+    "Work Location": "MOE Headquarters, Singapore (On-site; may include partner school visits)",
+    "Category": "Product Manager",
+    "LevelTags": [
+      "Undergraduate",
+      "Polytechnic"
+    ],
+    "DurationTags": [
+      "6 months",
+      "12 months"
+    ],
+    "LocationTags": [
+      "MOE Headquarters, Singapore (On-site; may include partner school visits)"
     ]
   },
   {
