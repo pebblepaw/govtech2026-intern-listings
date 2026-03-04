@@ -130,6 +130,34 @@ const LOCATION_RULES = [
   { includes: 'Non-Headquarters SEAB', mapping: 'SEAB (Geylang Bahru)' },
 ];
 
+function getWorkLocationFromRow(clean) {
+  // Robust-ish header detection: allow extra words like "(FormSG)".
+  // Strategy: exact keys first, then includes match on normalized key.
+  const direct = (clean['Work Location'] || clean['Work Location (FormSG)'] || clean['Work Location (Form SG)'] || '').toString().trim();
+  if (direct) return direct;
+
+  const entries = Object.entries(clean);
+  for (const [k, v] of entries) {
+    const kk = (k || '').toString().trim().toLowerCase();
+    if (!kk) continue;
+    if (kk.includes('work location')) {
+      const val = (v || '').toString().trim();
+      if (val) return val;
+    }
+  }
+
+  // fallback: sometimes header is missing spaces/punct.
+  for (const [k, v] of entries) {
+    const kk = (k || '').toString().trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (kk.includes('worklocation')) {
+      const val = (v || '').toString().trim();
+      if (val) return val;
+    }
+  }
+
+  return '';
+}
+
 function locationTags(locStr) {
   const raw = (locStr || '').toString().trim();
   if (!raw) return [];
@@ -193,10 +221,8 @@ for (const sheetName of wb.SheetNames) {
     // One-hot-ish tags for clean filtering
     clean['LevelTags'] = levelTags(clean['Internship Level']);
     clean['DurationTags'] = durationTags(clean['Internship Period']);
-    // Work Location field is inconsistent across sheets (sometimes "Work Location (FormSG)").
-    const wl = (
-      (clean['Work Location'] || clean['Work Location (FormSG)'] || '').toString().trim()
-    );
+    // Work Location field is inconsistent across sheets (sometimes "Work Location (FormSG)" or other variants).
+    const wl = getWorkLocationFromRow(clean);
     const before = locationTags(wl);
     // Mark unknown only if we fell back AND there isn't an explicit exact-match rule.
     const exactRule = LOCATION_RULES.some(r => ((r.includes ?? '').toString().trim().toLowerCase() === (wl||'').toString().trim().toLowerCase()));

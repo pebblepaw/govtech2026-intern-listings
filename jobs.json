@@ -1892,11 +1892,6 @@
     "Learning Outcomes from Project": "- Gain in-depth knowledge of emerging or advanced AI techniques through research and experiments\r\n- Gain hands-on experience in applying emerging or advanced AI techniques in real-world use cases\r\n- Gain experience and skills in AI engineering through the delivering of prototypes and solutions using cutting-edge tech stacks",
     "Prerequisites": "•Practical Experience: Proven track record applying data science, machine learning and AI to solve real-world problems\r\n•Technical Proficiency: Strong programming skills in Python, Java, or Rust, with willingness to learn additional languages\r\n•AI Expertise: Deep understanding of:\r\n- Frameworks: PyTorch, TensorFlow, vLLM, HuggingFace Transformers, Text-Generation Inference\r\n- Generative AI: Prompt engineering, RAG, LLM fine-tuning, agentic AI applications\r\n- Research Methods: Experimental design, preprocessing, model selection and evaluation\r\nand a strong technical intuition to learn and adapt new concepts in AI to tangible outcomes.",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -1918,11 +1913,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience in real-world data science projects, particularly in the public sector domain.\r\n2. Sharpen technical skills in areas like natural language processing, advanced statistics, and model deployments.\r\n3. Refine soft skills that are essential to data science work, such as project scoping, stakeholder management, and effective communication.\r\n4. Learn more about how data science is being done in the public sector.",
     "Prerequisites": "1. Good understanding of statistics and machine learning concepts, and able to think critically about data science problems.\r\n2. Proficient in either R or Python, especially the data science libraries.\r\n3. Familiarity with cloud computing, data engineering, or version control (Git) will be an advantage.\r\n4. Passionate about data science and eager to learn\r\n5. [Good to have] Demonstrated ability to experiment rapidly and deploy ML solutions end-to-end. \r\n6. [Good to have] Strong technical understanding of LLMs, especially how they work, how to do prompt engineering effectively, and how to build apps with them\r\n7. [Good to have] Proficient in using coding assistants to accelerate problem-solving",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -1944,11 +1934,6 @@
     "Learning Outcomes from Project": "1. Develop a strong understanding of key Responsible AI dimensions, such as safety, robustness, fairness, interpretability and/or explainability, in the context of public sector AI deployments.\r\n2. Gain hands-on experience designing and building practical frameworks and tools for assessing and mitigating AI risks in real-world AI applications, while gaining technical experience in using and evaluating the latest LLMs.\r\n3. Build end-to-end data science and applied research and engineering skills, including experiment design, data analysis, tool development, and communicating actionable findings.\r\n4. Build applied research capabilities by translating emerging research ideas into practical solutions, and implementing them in a fast-paced, real-world environment.",
     "Prerequisites": "1. Proficiency in Python, with experience in data science/AI engineering projects.\r\n2. Practical experience with LLMs and GenAI (e.g. prompt engineering, fine-tuning, RAG, agentic workflows).\r\n3. Solid understanding of applied NLP and machine learning, including statistical analysis, data visualisation, and feature engineering.\r\n4. Able to work independently, reason through ambiguous problems, and communicate technical ideas clearly.\r\n5. Genuine interest in Responsible AI and a passion for improving public services.\r\n6. (Nice to have)\r\n- Experience with cloud platforms such as AWS, Azure, or GCP\r\n- Familiarity with GPU-accelerated frameworks (e.g. PyTorch)\r\n- Experience with containerisation and deployment tools (e.g. Docker, Kubernetes)\r\n- Exposure to MLOps, software engineering practices, or operating ML systems in production\r\n- Prior research experience or academic publications in AI/ML",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -1970,11 +1955,6 @@
     "Learning Outcomes from Project": "1. Design and implement end-to-end MLOps using Databricks workflows, Machine Learning and GenAI capabilities.\r\n2. Work with WOG tools, eg SHIP-HATS, Cloak and DataHive etc.\r\n3. Conduct unit testing and user acceptance tests.\r\n4. Provide support on existing pipelines and implementation.",
     "Prerequisites": "1. Experience in Databricks, with proficiency in python, Sparks and SQL.\r\n2. Knowledge in Data modeling\r\n3. Knowledge in Machine Learning, Model evaluations, and MLOps\r\n3. Knowledge in CICD practices",
     "Work Location": "Jurong Westgate",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -1996,11 +1976,6 @@
     "Learning Outcomes from Project": "Working on the BEACON project (Building Enhanced Assurance Controls Oversight Network) offers a unique opportunity for the engineer interns to gain practical, interdisciplinary experience at the intersection of cybersecurity, AI, and compliance.\r\n\r\n4 key learning points that they can derive from contributing to this LLM-powered IT security and resilience compliance agent are stated below. These are designed to be hands-on and applicable to interns, with relevance to their respective fields, fostering skills in real-world tool development.\r\n \r\n1. Integration of AI in Cybersecurity Workflows: The interns will learn how to embed LLMs into security tools for automating tasks like policy analysis, vulnerability detection, and resilience simulations. The interns will focus on aligning these with standards like NIST and Government IM8 policy, and exploring prompt engineering and RAG techniques to ensure accurate, domain-specific outputs.\r\n \r\n2. Hands-On Development of Secure and Resilient AI Agents: Through building features like real-time monitoring and remediation suggestions, they'll gain experience in designing AI architectures (e.g., using LangChain) that prioritize security controls. This will teach the engineers about fine-tuning models for cybersecurity datasets, and about implementing resilience measures like failover simulations.\r\n \r\n3. Ethical Considerations and Bias Mitigation in AI-Driven Compliance: The project involves handling sensitive IT data and regulatory standards, and interns will learn to incorporate guardrails like anonymization, bias checks, and human oversight loops. This allows the engineers to understand ethical AI deployment, and the techniqiues in applying compliance frameworks (e.g., IM8) to AI tools, enhancing their ability to create trustworthy systems.\r\n \r\n4. Cross-Disciplinary Collaboration and Project Iteration: By working with the business team on prototyping, testing, and deployment (e.g., simulating audits or integrating with tools like OpenSCAP), they will develop skills in agile collaboration, version control, and iterative refinement based on metrics like detection accuracy. This will help and prepare the intern for multidisciplinary tech environments.",
     "Prerequisites": "Basic knowledge of cybersecurity concepts (e.g., encryption, vulnerabilities, NIST frameworks). Proficiency in programming (e.g., Python, Bash) and tools like Wireshark or OpenSCAP. Familiarity with IT systems (networks, OS security). Understanding of machine learning basics (e.g., neural networks, LLMs). Strong programming skills in Python, with libraries like PyTorch or LangChain. Experience with data handling and ethical AI practices. Experience in working with AI models and tools.",
     "Work Location": "Hybrid - [Home Base] Mapletree Business City, Block 10, Level 10 (S117438) and Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -2024,11 +1999,6 @@
     "Learning Outcomes from Project": "• Gain hands-on experience applying data science in the public sector to improve enterprise asset visibility, cybersecurity posture, and operational risk using Axonius.\r\n• Build and automate data pipelines via Axonius APIs to process and analyze multi-source asset data across cloud, endpoint, identity, and security domains.\r\n• Develop dashboards and visualizations to communicate asset risk, control coverage, and exposure trends to engineering and security teams.\r\n• Perform statistical analysis, anomaly detection, and risk modeling to generate actionable operational insights.\r\nTranslate real-world enterprise challenges into data-driven solutions that support governance, compliance, and informed decision-making.",
     "Prerequisites": "• Currently pursuing a Bachelor’s degree in Computer Science, Data Science, Statistics, Engineering, or a related quantitative field.\r\n• Experience with data visualization tools such as Tableau, Power BI, Kibana, or similar platforms for presenting analytical insights (dashboard development experience is preferred).\r\n• Basic knowledge of SQL and database concepts for data extraction, transformation, and analysis of structured and semi-structured datasets.\r\n• Familiarity with REST APIs for data integration and automation workflows, and working knowledge of JSON data formats (experience working with platform APIs such as Axonius is an advantage).\r\n• Knowledge of cloud computing platforms (AWS, Azure, or GCP) and version control tools (e.g., Git) will be an advantage.\r\n• Strong analytical and problem-solving skills with attention to detail for handling large, complex datasets.\r\nGood communication and interpersonal skills to effectively present insights and collaborate with engineering, security, and platform teams.",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -2050,11 +2020,6 @@
     "Learning Outcomes from Project": "• Gain hands-on experience in real-world data science projects within the public sector domain, specifically in system reliability and observability using industry-leading tools\r\n• Learn to build and deploy automated data pipelines using Dynatrace APIs, Elastic Stack (Elasticsearch, Logstash, Kibana), and modern data science frameworks\r\n• Enhance skills in data visualization using Elastic's Kibana and advanced statistical analysis to communicate complex technical insights to engineering teams\r\n• Acquire knowledge of observability data structures from Dynatrace's full-stack monitoring and Elastic's log analytics, understanding system performance metrics and reliability engineering principles\r\nDevelop expertise in translating business requirements into data science solutions for operational excellence using enterprise observability platforms",
     "Prerequisites": "• Currently pursuing a Bachelor's degree in Computer Science, Data Science, or related field\r\n• Experience with data visualization tools such as Kibana, Grafana, or similar platforms (Kibana experience preferred for Elastic integration)\r\n• Basic knowledge of SQL and database concepts for data extraction and manipulation from observability platforms\r\n• Familiarity with REST APIs for integrating with Dynatrace and Elastic services, and understanding of JSON/YAML data formats\r\n• Knowledge of cloud computing platforms (AWS, Azure, GCP) and version control (Git) will be an advantage\r\n• Strong analytical and problem-solving skills with attention to detail for accuracy in data analysis\r\nGood communication and interpersonal skills to collaborate effectively with engineering teams and stakeholders",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -2076,11 +2041,6 @@
     "Learning Outcomes from Project": "1. Understand evolving problems and utilise data and techniques to solve them.\r\n2. Develop machine learning models and track their effectiveness.\r\n3. Present findings, solicit feedback and prioritise refinements to the ML models.",
     "Prerequisites": "1. Familiarity with machine learning algorithms and frameworks like scikit-learn, TensorFlow, or PyTorch.\r\n2. Have an interest in model development (e.g. regression, random forests, LLMs) and deployment (Sagemaker, TensorFlow).\r\n3. Able to work in agile environment",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -2102,11 +2062,6 @@
     "Learning Outcomes from Project": "1. Design and implement AI solutions for computer vision, audio analysis, and multimodal applications, with a focus on content intelligence analysis and processing techniques, whilst gaining expertise in real-world applications. 2. Build functional prototypes and proof-of-concept systems to demonstrate technical feasibility and validate solution approaches. 3. Conduct AI experiments focused on public sector challenges, staying current with emerging techniques in multimodal AI, audio processing, and computer vision. 4. Collaborate effectively with team members to understand requirements, implement solutions, and document technical approaches. 5. Build professional communication skills through presenting complex technical findings and insights to diverse stakeholders in clear, accessible terms.",
     "Prerequisites": "1. Able to commit full-time during the internship period with minimal curricular or co-curricular commitments. 2. Strong Python programming skills with experience in computer vision and audio frameworks (OpenCV, PyTorch, Torchaudio, Librosa) and familiarity with vision, audio, and multimodal models (e.g., classifiers, detectors, ASR, TTS). 3. Understanding of multimodal AI, computer vision, audio signal processing, cloud (AWS, GCP), and edge computing concepts and architectures combined with real-world experience in dataset engineering, synthetic data generation, model finetuning, multimodal RAG, and evaluation. 4. Demonstrated ability to leverage agentic AI coding tools like Claude Code and Cursor for agent-assisted end-to-end development and task completion across the whole AI lifecycle. 5. Experience and interest in AI areas such as agentic workflows, long-form video and audio understanding, and real-world AI applications for public safety and smart city initiatives, would be advantageous.",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Open to all levels"
@@ -2128,11 +2083,6 @@
     "Learning Outcomes from Project": "1. Gain full-stack Data Science, ML experience with Big Data\r\n2. Learn how to work interdependently with Product, Design, Ops teams to deliver projects end-to-end\r\n3. Gain broad knowledge about building products, features and how to influence through Data",
     "Prerequisites": "1. Strong programming fundamentals in Python programming, SQL\r\n2. Strong fundamentals in statistics, Data Science theory\r\n3. Strong experience in analytics, metrics, experimentation\r\n4. Good to have - experience in AI/LLM applications and deployment\r\n5. Good to have - experience in PySpark, AWS Cloud, CI/CD",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -2154,11 +2104,6 @@
     "Learning Outcomes from Project": "1. Gain full-stack Data Science, ML experience with Big Data\r\n2. Learn how to work interdependently with Product, Design, Ops teams to deliver projects end-to-end\r\n3. Gain in-depth domain knowledge about fraud, scams and industry best-practices",
     "Prerequisites": "1. Strong programming fundamentals in Python programming, SQL\r\n2. Strong fundamentals in statistics, Data Science theory\r\n3. Practical experience building supervised/semi-supervised/unsupervised ML solutions, from data engineering, fine-tuning, evaluation\r\n4. Good to have - experience in MLOps, model deployment\r\n5. Good to have - experience in PySpark, AWS Cloud, CI/CD",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -2180,11 +2125,6 @@
     "Learning Outcomes from Project": "1.  Gain hands-on development experience in AI solutions and management dashboards.\r\n2.  Participate in end-to-end agile software delivery processes.\r\n3.  Gain knowledge of operational IT processes in the government.",
     "Prerequisites": "1.  Familiarity with AI concepts.\r\n2.  Proficient in at least one data visualisation software.\r\n3.  Eager to explore, learn and apply.",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate"
@@ -2206,11 +2146,6 @@
     "Learning Outcomes from Project": "1. Conduct comprehensive landscape analysis of content generation and detection technologies, mapping the evolving threat landscape and identifying cutting-edge detection solutions from academia and industry.\r\n2. Design and implement automated benchmarking pipelines to systematically evaluate third-party detection solutions across multiple modalities and datasets, analysing performance trade-offs and identifying optimal solutions for different use cases.\r\n3. Build automated evaluation frameworks that continuously test detection solutions against emerging generation techniques, implementing strategies to measure robustness, generalisation, and failure modes.\r\n4. Integrate and orchestrate multiple detection solutions into a unified evaluation platform, learning to design testing APIs, manage solution versioning, and create comparative analysis dashboards for stakeholder decision-making.",
     "Prerequisites": "1. Able to commit full-time during the internship period without other curricular or co-curricular commitments.\r\n2. Strong Python programming skills with experience in deep learning frameworks (e.g. PyTorch) and familiarity with content generation models (e.g. diffusion models).\r\n3. Understanding of deepfake generation techniques and detection methodologies, including knowledge of the latest research in facial forensics, temporal consistency analysis, and multimodal approaches for detecting synthetic media.\r\n4. Knowledge of evaluation pipelines and MLOps practices, including experience with automated testing frameworks, synthetic data generation for benchmarking, dataset curation tools, and reproducible experimentation.\r\n5. Knowledge of AWS (e.g. SageMaker, Athena) is a plus.",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Open to all levels"
@@ -2232,11 +2167,6 @@
     "Learning Outcomes from Project": "Transforming employment mediation through predictive analytics and GenAI\r\n\r\n• Mediation Pattern Analysis: Master advanced data mining and statistical analysis techniques to evaluate TADM mediator resolution strategies, identifying successful mediation patterns and quantifying effectiveness of different dispute resolution approaches across various employment scenarios.\r\n\r\n• AI Training Dataset Development: Learn to transform qualitative mediation expertise into structured training data, creating comprehensive playbooks and knowledge bases that capture mediator decision-making processes for GenAI model development and fine-tuning.\r\n\r\n• Predictive Dispute Modelling: Develop machine learning models to predict dispute outcomes and recommend optimal resolution pathways, using historical case data to build algorithms that can guide parties toward successful self-service settlements.\r\n\r\n• GenAI Model Evaluation and Optimisation: Gain expertise in evaluating conversational AI performance for legal advisory contexts, implementing robust testing frameworks to ensure AI-generated advice aligns with established mediation principles and regulatory compliance.\r\n\r\n• Automated Negotiation System Design: Build intelligent e-negotiation frameworks that provide contextual guidance to both claimants and respondents, creating self-service dispute resolution systems that reduce dependency on human mediators while maintaining fairness and legal accuracy.",
     "Prerequisites": "Essential skills for AI-Assisted Dispute Resolution Analytics\r\n\r\n• Statistical Analysis and Data Mining: Proficiency in statistical methods, hypothesis testing, and exploratory data analysis using Python (pandas, scikit-learn) or R. Experience with pattern recognition, clustering, and classification techniques through coursework or academic projects.\r\n\r\n• Machine Learning Fundamentals: Understanding of supervised and unsupervised learning algorithms, model evaluation metrics, and cross-validation techniques. Familiarity with predictive modelling concepts and experience building basic ML models for classification or regression problems.\r\n\r\n• Natural Language Processing for Legal Text: Knowledge of text analytics, sentiment analysis, and document classification methods. Experience processing unstructured text data, understanding legal/regulatory language patterns, and extracting insights from textual documents.\r\n\r\n• Data Visualisation and Reporting: Skills in creating compelling data visualisations using tools like matplotlib, seaborn, or Tableau to communicate analytical findings. Ability to translate complex statistical results into clear insights for non-technical stakeholders and policy makers.",
     "Work Location": "Non-Headquarter Service Centre MOM 2 (S339946)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate",
@@ -2259,11 +2189,6 @@
     "Learning Outcomes from Project": "Transforming employment mediation through predictive analytics and GenAI\r\n\r\n• Mediation Pattern Analysis: Master advanced data mining and statistical analysis techniques to evaluate TADM mediator resolution strategies, identifying successful mediation patterns and quantifying effectiveness of different dispute resolution approaches across various employment scenarios.\r\n\r\n• AI Training Dataset Development: Learn to transform qualitative mediation expertise into structured training data, creating comprehensive playbooks and knowledge bases that capture mediator decision-making processes for GenAI model development and fine-tuning.\r\n\r\n• Predictive Dispute Modelling: Develop machine learning models to predict dispute outcomes and recommend optimal resolution pathways, using historical case data to build algorithms that can guide parties toward successful self-service settlements.\r\n\r\n• GenAI Model Evaluation and Optimisation: Gain expertise in evaluating conversational AI performance for legal advisory contexts, implementing robust testing frameworks to ensure AI-generated advice aligns with established mediation principles and regulatory compliance.\r\n\r\n• Automated Negotiation System Design: Build intelligent e-negotiation frameworks that provide contextual guidance to both claimants and respondents, creating self-service dispute resolution systems that reduce dependency on human mediators while maintaining fairness and legal accuracy.",
     "Prerequisites": "Essential skills for AI-Assisted Dispute Resolution Analytics\r\n\r\n• Statistical Analysis and Data Mining: Proficiency in statistical methods, hypothesis testing, and exploratory data analysis using Python (pandas, scikit-learn) or R. Experience with pattern recognition, clustering, and classification techniques through coursework or academic projects.\r\n\r\n• Machine Learning Fundamentals: Understanding of supervised and unsupervised learning algorithms, model evaluation metrics, and cross-validation techniques. Familiarity with predictive modelling concepts and experience building basic ML models for classification or regression problems.\r\n\r\n• Natural Language Processing for Legal Text: Knowledge of text analytics, sentiment analysis, and document classification methods. Experience processing unstructured text data, understanding legal/regulatory language patterns, and extracting insights from textual documents.\r\n\r\n• Data Visualisation and Reporting: Skills in creating compelling data visualisations using tools like matplotlib, seaborn, or Tableau to communicate analytical findings. Ability to translate complex statistical results into clear insights for non-technical stakeholders and policy makers.",
     "Work Location": "Non-Headquarter Service Centre MOM 2 (S339946)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Data Scientist",
     "LevelTags": [
       "Undergraduate",
@@ -2286,11 +2211,6 @@
     "Learning Outcomes from Project": "1. Interns will learn about various data exchange frameworks, including protocols for secure data transmission, data formats, and integration with third-party systems to ensure seamless and efficient communication between platforms. 2. Interns will gain experience in continuous integration/continuous deployment (CI/CD) pipelines, automated testing, and monitoring using Kubernetes and cloud-native tools. 3. Interns will learn how to collect, manage, and analyze large sets of data, gaining insights into how data can inform business decisions and drive product enhancements in the context of open digital platforms.",
     "Prerequisites": "1. Proficiency in at least one programming language: Java / TypeScript / Python to contribute to platform development and integration tasks. 2. Knowledge of protocols (e.g. AMQP, BacNet, OPCUA, RESTful APIs, etc.) for secure data communication. 3. Hands-on experience with Kubernetes 4. Familiarity with cloud platforms (e.g. AWS, Azure, or GCP) to deploy, manage, and scale applications in a cloud-native environment.",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Undergraduate"
@@ -2312,11 +2232,6 @@
     "Learning Outcomes from Project": "Gain knowledge in observability and compliance management.  Secure system to ensure system resiliency and compliance.",
     "Prerequisites": "Knowledge in AWS, Linux scripting",
     "Work Location": "Non-Headquarters MOM 1 (S059764)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Undergraduate",
@@ -2340,11 +2255,6 @@
     "Learning Outcomes from Project": "1. Gains exposure to cloud services 2. Gains experience working collaboratively with the team and engaging with users 3. Hands-on development of applications that have significant impact on the public at scale 4. Gains experience working integration to building system",
     "Prerequisites": "1. Gains exposure to cloud services 2. Gains experience working collaboratively with the team and engaging with users 3. Hands-on development of applications that have significant impact on the public at scale 4. Develops understanding of CI/CD processes 5. Works with JavaScript and TypeScript 6. Becomes comfortable using CLI for configuration, including Linux commands 7. Utilises ReactJS and NestJS or similar frameworks 8 Acquires knowledge of cloud services",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Undergraduate",
@@ -2367,11 +2277,6 @@
     "Learning Outcomes from Project": "1.Gain experience from applying your problem-solving and applying your technical cloud skills and knowledge to automating workflows, dashboards and processes in a real world environment.\r\n2.Gain experience and knowledge working with GCC (government on commercial cloud AWS and Azure), \r\n3.Gain experience working with government SHIP/HATS DevSecOps platform\r\n4.Gain experience working with observability toolings and platforms used in GCC",
     "Prerequisites": "1.Proficient in AWS and Azure automation and scripting\r\n2.Proficient in harnessing LLM, AI, MCP \r\n2.Able to explore and quickly learn to harness dashboards, observability toolings, robotic process automation\r\n3.Knowledge of serverless will be advantage",
     "Work Location": "Others",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Undergraduate",
@@ -2395,11 +2300,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on genAI tool and chatbot development experience in applying cutting-edge tech stacks (Copilot studio, copilot and AIBots).  \r\n2. Gain in-depth knowledge of product management practices in Infra teams.\r\n3. Gain hands-on knowledge for building process to keep the chatbot updated with the latest advancements.",
     "Prerequisites": "1. familiarity with genAI tools\r\n2. familiarity with building chatbot\r\n3. familiarity with low-code platform (Microsoft power platform)",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Undergraduate"
@@ -2421,11 +2321,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on development experience in applying cutting-edge tech stacks (Terraform, gitlab, cloud technology, open source, Kubernetes, Ansible, etc).  \r\n2. Participate in end-to-end DevOps and agile software delivery processes.  \r\n3. Gain in-depth knowledge of Infrastructure as Code (IaC), Ansible, and build resilient infrastructure through IaC pipelines.  \r\n4. Gain in-depth knowledge in practical applications.",
     "Prerequisites": "1. Has some tech background (e.g. has written own app).  Added advantage if know YAML, Ansbile, linux scripting, etc\r\n2. Willing to learn\r\n3. Keen interest in Cloud and AWS, DevOps, AI area",
     "Work Location": "Others",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Undergraduate",
@@ -2449,11 +2344,6 @@
     "Learning Outcomes from Project": "1. Gain knowledge in Systems Engineering and Operational Technology (OT) 2. Gain hands-on experience in technical skills such as API integration and microservices architecture 3. Gain hands-on experience with cloud platforms for IoT workloads, deployment, and scaling 4. Gain experience working with cross-functional teams and engaging with users",
     "Prerequisites": "1. Proficiency in at least one object-oriented programming (OOP) language such as Java or C++, another scripting language (e.g. Python, JavaScript) and frontend frameworks (e.g. React, Angular). 2. Experience in web and backend application development, with exposure to cloud technologies 3. Familiarity with cloud application architecture, microservices, and serverless computing. 4. Knowledge in IoT / OT communication protocols and middleware will be a plus.",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Undergraduate"
@@ -2475,11 +2365,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience with system integration 2. Gain exposure to multidisciplinary technologies 3. Enhance your ability to approach complex engineering challenges, from prototyping and testing to system optimization. 4. Strengthen your software development skills while gaining hands-on experience in embedded systems programming, sensor integration, and data processing.",
     "Prerequisites": "1. Proficiency in at least one object-oriented programming (OOP) language such as Java or C++ 2. Ability to interface hardware with software platforms via serial, GPIO, USB, network connections 3. Familiarity with cloud application architecture, microservice",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Undergraduate"
@@ -2501,11 +2386,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience with cutting-edge robotics platforms and AI frameworks, including NVIDIA Isaac Sim for robot simulation, NVIDIA Isaac Lab for reinforcement learning training, NVIDIA Jetson for edge AI computing, and Unitree's humanoid robot hardware and SDK for real-world deployment. 2. Develop expertise in embodied AI and social intelligence technologies, including NVIDIA Cosmos for advanced scene understanding and social interaction recognition, multimodal perception systems, real-time sensor fusion, and the integration of computer vision, natural language processing, and robotic control systems. 3. Master end-to-end robotics development workflows, from simulation-based RL training and reward system design to hardware deployment optimisation, covering deep learning model development and real-time inference in dynamic physical environments. 4. Gain practical expertise in human-robot interaction and safety-critical system design, including social cue interpretation, conversational context awareness, safety protocol implementation for multi-person environments, and the ethical considerations of deploying autonomous systems in human-shared spaces.",
     "Prerequisites": "• Proficient in Python programming with experience in object-oriented programming, data structures, and familiarity with scientific computing libraries (NumPy, OpenCV, or similar). • Comfortable with Linux operating systems including command-line interface, file system navigation, package management, and basic system administration. • Experience with Git version control including branching, merging, pull requests, and collaborative development workflows. • Strong foundation in mathematics and computer science fundamentals, including linear algebra, calculus, and basic understanding of machine learning or computer vision concepts. • Preferred but not required: Experience with AWS cloud services, NVIDIA software stack (CUDA, TensorRT, Isaac Sim), ROS2, deep learning frameworks (PyTorch, TensorFlow), or robotics simulation environments will be an advantage.",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Undergraduate"
@@ -2527,11 +2407,6 @@
     "Learning Outcomes from Project": "· Comprehensive understanding of enterprise resilience, business continuity planning, and AWS cloud resilience services\r\n\r\n· Skills in risk assessment, gap analysis, resilience improvement planning, and large-scale government IT operations exposure\r\n\r\n· Project coordination, stakeholder management, and incident response experience in mission-critical environments\r\n\r\n· Understanding of compliance frameworks, crisis management procedures, and professional development opportunities\r\n\r\n· Mentorship from experienced professionals with opportunity to contribute to Singapore's education technology infrastructure reliability\r\n\r\n· Foundational knowledge in SAO design and ASA monitoring, including hands-on experience with availability analytics, reporting tools, and SLA management",
     "Prerequisites": "· Currently pursuing or recently completed studies in Computer Science, Information Technology, or related technical field\r\n\r\n· Basic understanding of cloud computing concepts, preferably AWS services, with ability to work with AWS management console\r\n\r\n· Fundamental knowledge of system resilience, disaster recovery, and business continuity principles\r\n\r\n· Strong organisational and project coordination skills with analytical mindset for identifying risks and gaps\r\n\r\n· Good communication skills for coordinating with multiple stakeholders",
     "Work Location": "Non-HQ MOE1",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "System Engineer",
     "LevelTags": [
       "Open to all levels"
@@ -2553,11 +2428,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience in government procurement processes and digital transformation methodologies 2. Develop stakeholder engagement and project coordination skills through direct involvement in procurement initiatives 3. Apply service design and process improvement techniques to enhance government operations 4. Build data analysis and visualisation skills through procurement performance evaluation",
     "Prerequisites": "1. Strong interest in digital transformation and government technology 2. Excellent written and verbal communication skills with ability to engage diverse stakeholders 3. Strong analytical and problem-solving abilities with experience in data analysis and interpretation 4. Collaborative team player with experience in cross-functional environments 5. Self-motivated with demonstrated project management or organisational skills 6. Experience with low-code development platforms or similar tools would be an advantage",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate",
@@ -2581,11 +2451,6 @@
     "Learning Outcomes from Project": "Project Coordination: Gain experience in managing the logistics and communication required to roll out initiatives across a large organization. Stakeholder Engagement: Learn how to facilitate feedback loops between central leads and ground-level teams to ensure project alignment. Resource Development: Develop skills in creating and refining practical organizational materials like frameworks, templates, and guides. Internal User Research: Learn how to gather and synthesize \"on-the-ground\" needs to inform process improvements.",
     "Prerequisites": "Currently enrolled in a Polytechnic or University program (Business, Management, or related fields). Strong Organisational Skills: Ability to organize materials, schedule sessions, and keep track of project moving parts. Effective Communication: Comfortable reaching out to various team leads to gather information and share updates. Proactive & Helpful Mindset: Willing to \"roll up your sleeves\" to help build tools and test them with real users. Independent Worker: Able to follow through on tasks with minimal supervision while collaborating effectively with the wider team.",
     "Work Location": "Mapletree Business City Block 10/Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate",
@@ -2609,11 +2474,6 @@
     "Learning Outcomes from Project": "By the end of the internship, you will: Understand how digital products and AI capabilities are tested, introduced, and enabled across WOG Gain exposure to real-world POC delivery, agency engagement, and adoption challenges in the public sector Learn how engagement strategies, enablement materials, and feedback loops support product scaling decisions Build skills in synthesizing qualitative and quantitative insights to inform product and engagement decisions Work closely with product teams, agencies, and internal stakeholders in a complex, multi-stakeholder environment",
     "Prerequisites": "Strong communication and synthesis skills (written and verbal) Comfortable working with ambiguity and evolving project scopes Proactive, organized, and able to work independently Interest in digital products, AI, public sector transformation, or user adoption Bonus / Preferred: Experience with events, workshops, research synthesis, or comms work Familiarity or curiosity about AI tools or digital productivity platforms",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate"
@@ -2635,11 +2495,6 @@
     "Learning Outcomes from Project": "Through this internship, you will develop: \r\n\r\nAdvanced Data Analytics Capabilities: Master sophisticated data analysis techniques to transform complex financial and operational datasets into actionable insights, including predictive modelling for budget forecasting and trend analysis. \r\n\r\nStrategic Portfolio Management Skills: Gain comprehensive understanding of digital portfolio governance, learning to balance competing priorities, assess project interdependencies, and optimise resource allocation across multiple concurrent initiatives. \r\n\r\nExecutive Communication and Presentation Excellence: Develop professional-grade reporting and presentation skills, learning to distil complex technical and financial information into clear, compelling narratives for stakeholder meetings. \r\n\r\nRisk Management and Performance Measurement: Build expertise in developing KPI frameworks, conducting risk assessments, and creating performance monitoring systems that drive accountability and continuous improvement in digital transformation initiatives. \r\n\r\nCross-functional Business Acumen: Understand the intersection of technology, finance, and strategy in large organisations, gaining insights into procurement processes, vendor management, and the broader digital transformation landscape.",
     "Prerequisites": "Education: Currently pursuing undergraduate studies in Data Science, Business Analytics, Information Systems, Finance, or related quantitative disciplines with strong academic performance. \r\n\r\n \r\n\r\nTechnical Proficiency: Demonstrated competency in data analysis tools such as Excel (advanced functions), SQL, Python, R, or similar platforms, with experience in data visualisation tools like Tableau, Power BI, or equivalent. \r\n\r\n \r\n\r\nAnalytical Mindset: Strong quantitative reasoning abilities with experience in statistical analysis, financial modelling, or business intelligence projects, evidenced through coursework, personal projects, or previous internships. \r\n\r\n \r\n\r\nCommunication Skills: Excellent written and verbal communication abilities with experience creating professional presentations or reports, and comfort presenting findings to diverse audiences. \r\n\r\n \r\n\r\nBusiness Curiosity: Genuine interest in digital transformation, technology strategy, and organisational change, with basic understanding of project management principles and business operations.",
     "Work Location": "Paya Lebar Quarter -PLQ 2 (S408533)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate"
@@ -2661,11 +2516,6 @@
     "Learning Outcomes from Project": "1. The \"Process Detective\": Mastering the Art of Digital Workflow Design\r\nThe Mission: You will learn to look at a messy, human process (like a conversation about a new project) and translate it into a clean, logical system workflow. You will hunt for bottlenecks and find the \"hidden value\" that turns a casual lead into a national project.\r\n\r\nFormal Learning Outcome:\r\nCompetency in Business Process Re-engineering (BPR): The intern will be able to analyse current-state operational workflows, identify inefficiencies, and design future-state processes within the MAPS CRM to optimize the \"Lead-to-Value Creation\" lifecycle.\r\n\r\n2. The \"Data Architect\": Stewarding the Single Source of Truth\r\nThe Mission: Data is the fuel for our engineering engine. Your job is to ensure the engine doesn't get clogged with bad fuel. You will learn how to configure the MAPS system enabling it to serve the organisation.\r\n\r\nFormal Learning Outcome:\r\nCRM Proficiency & Data Governance: The intern will increase proficiency in understanding what is necessary in CRM dashboards and executing data hygiene protocols to ensure 100% accuracy in pipeline reporting.\r\n\r\n3. The \"Value Hunter\": Decoding Demand for Digital Government\r\nThe Mission: We don't sell; we serve. But we still need to know what our \"customers\" (government agencies) need. You will learn how to listen to a request.\r\n\r\nFormal Learning Outcome:\r\nStakeholder Engagement & Change Management: The intern will gain experience in facilitating user adoption, gathering user feedback, and communicating technical process changes to non-technical stakeholders. Furthermore, the intern will learn about value chain mapping to determine what is important for MAPS.",
     "Prerequisites": "1. Logical Puzzle Thinking: Ability to organise chaos - We are looking for someone who sees a messy list and instinctively wants to sort, categorise and/or retag it.\r\n2: Process Visualisation: Ability to visualise processes and be able to chart it down into simple documents (e.g.: PowerPoint, Excel, or when able Visio/Miro/Figma).\r\n3: Civic Mindedness: Demonstrate an interest in how technology can improve public services. \r\n4: Continuous Learning: Willing to pick-up simple digital/tech skills (e.g.: Configuring workflows).",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate",
@@ -2689,11 +2539,6 @@
     "Learning Outcomes from Project": "- Opportunity to work on meaningful and impactful projects that support the mission, vision and culture of the organization. - Exposure to a variety of organizational development methodologies and practices. - Mentorship and guidance from experienced and knowledgeable consultants. - Networking and career development opportunities within our division and GovTech.",
     "Prerequisites": "Qualifications - Currently enrolled in a bachelor's or master's degree program in Leadership & Organizational Development, Human Resources, Psychology, Business, or a related field. - Strong interest and passion for organization development and human resources in general. - Excellent communication, interpersonal, and presentation skills. - Proficient in Microsoft Office applications, especially PowerPoint and Excel. - Experience with AI tools to generate powerpoint presentations, support survey analysis. - Ability to work independently and collaboratively in a fast-paced and dynamic environment. - Flexible, adaptable, and eager to learn and grow.",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate",
@@ -2717,11 +2562,6 @@
     "Learning Outcomes from Project": "1. Lead a programme from start to finish, covering planning, coordination, timelines, and execution. 2. Work with AI practitioners across the whole of government and interact with officers at different levels, including senior leaders. 3. Gain an insider view of how AI is used in the public sector, including tools built specifically for public officers. 4. Apply generative AI skills by designing challenges, games, or activities for a real community. 5. Build confidence turning ideas into working outcomes, whether learning new skills or extending existing ones.",
     "Prerequisites": "1. Experience managing a programme, project, or event from start to finish. 2. Familiarity with generative AI, even if only at a beginner level. 3. Comfort with public speaking or facilitating discussions. 4. Ability to work independently and solve problems with minimal supervision.",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate"
@@ -2743,11 +2583,6 @@
     "Learning Outcomes from Project": "As an intern, you will gain hands-on experience with the Workday system, widely used by statutory boards. You will actively participate in end-to-end processes alongside project teams, contributing to the development of automation solutions that enhance daily operations. Additionally, you will gain exposure to key finance operations functions, expanding your understanding of both technology and finance in a real-world business context",
     "Prerequisites": "Adopt a systematic and analytical approach to problem-solving, while comfortably balancing multiple projects and collaborating with different teams. Be proactive in managing tasks, staying organized, and prioritizing work to meet deadlines in a supportive and dynamic environment",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate"
@@ -2769,11 +2604,6 @@
     "Learning Outcomes from Project": "- Gain experience in developing and executing multi-channel brand campaigns\r\n- Learn to track and analyse campaign performance metrics and brand perception data\r\n- Collaboration with cross-functional product teams in implementing and maintaining brand guidelines\r\n- Independently manage routine website content updates and coordinate content requirements across departments effectively",
     "Prerequisites": "Current student in Marketing, Communications, Business, or related field \r\n\r\nStrong interest in branding, digital marketing, and public sector technology \r\n\r\nExcellent written and verbal communication skills \r\n\r\nKeen eye for design and visual aesthetics \r\n\r\nAbility to work collaboratively in a fast-paced environment \r\n\r\nProficiency in Microsoft Office suite; knowledge of design software (e.g. Canva, Adobe Creative Suite) is a plus \r\n\r\nUnderstanding of social media platforms and content creation is beneficial",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Open to all levels"
@@ -2795,11 +2625,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience in the ideation, planning, execution and evaluation of content for digital communications and social media platforms to achieve organisational marketing and communications objectives. 2. Analysis and review of performance of social/digital media comms and marketing initiatives, to derive key learning points and improvements for similar endeavours in the future 3. Gain experience working with cross-functional teams and stakeholder management 4. Gain event and engagement sessions organisation skills",
     "Prerequisites": "1. Studying Marketing, Communications or related fields 2. Keen interest in community engagement, content creation and/or marketing 3. Enjoys writing or developing content – some experience in design/video editing tools such as Capcut, Canva, Figma, Adobe photoshop, Illustrator, Premiere Pro or equivalent software would be an advantage 4. Able to multitask or work comfortably on several tasks concurrently 5. Good presentation, communication and copywriting skills",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate",
@@ -2822,11 +2647,6 @@
     "Learning Outcomes from Project": "1. Through the internship, the intern will gain practical skills related to Learning & Development, Data Analytics and stakeholder partnerships. \r\n2. The intern will also appreciate how GovTech’s programmes for tech leaders and officers enable the ministries and agencies to deliver effective digital services to the citizens.\r\n3. The intern will also have an opportunity to sit in sessions meant only for government participants.",
     "Prerequisites": "1. Competent in the use of Microsoft Excel and Microsoft PowerPoint. Candidate should be able to import files/ record from different sources and export to commonly used formats.\r\n2. Detail-oriented, well-organized, and able to manage multiple tasks.\r\n3. A team player with good writing and communication skills.\r\n4. Prior experience in using Generative AI would be beneficial, but not mandatory.",
     "Work Location": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate",
@@ -2850,11 +2670,6 @@
     "Learning Outcomes from Project": "1) Hands on experience on budgeting, variance analysis, management reporting\r\n2) Use of excel modelling and automation to improve manual processes and suggest improvements to user input templates & management reports.\r\n3) Enhancing data integrity of current data and information repositories & propose enhancements to data collection processes. \r\n4) Support the FP&A team in the budgeting and forecasting process at whole of GovTech level, consolidating inputs and assumptions from business units, and evaluating the financial impacts. \r\n5) Working with FP&A team to incorporate more data analysis/visualizations to aid the generation of data-driven insights for variance analysis.",
     "Prerequisites": "1) Strong analytical and creative problem-solving abilities with keen business sense and meticulous attention to detail.\r\n2) Proficiency in Excel and experience working with large datasets, including ability to analyse data for patterns and trends. Prior exposure to financial modelling and dashboard development would be advantageous.\r\n3) Excellent written and verbal communication skills, with ability to translate business needs into actionable insights through reports or visual presentations.\r\n4) Adaptability and comfort working in fast-paced, dynamic environments, including willingness to propose solutions, support process improvements, and implement changes.",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate"
@@ -2876,11 +2691,6 @@
     "Learning Outcomes from Project": "Through this internship, you will gain practical exposure to product marketing in the public sector, including: 1. End-to-End Go-To-Market Execution Support product launches and growth campaigns from messaging and positioning to campaign roll-out and performance tracking. 2. Integrated Marketing Skillset Develop foundational skills in copywriting, visual design, basic video production, campaign analytics and marketing experimentation. 3. Data-Driven Decision Making Analyse campaign and user data to generate actionable insights that improve marketing effectiveness and user adoption. 4. Partnership & Stakeholder Management Support coordination with government agencies, external vendors and community partners, and assist in marketing activations such as roadshows, talks and briefings. 5. Driving public good through product marketing Understand how digital products are marketed at scale from government to citizens to drive meaningful product adoption for public good.",
     "Prerequisites": "We are looking for a driven and resourceful self-starter who is comfortable working across functions and taking ownership of tasks. Key Requirements: 1. Holistic Marketing Skillset Ability to write clear, compelling copy; familiarity with basic design tools (e.g. Canva, Figma, Adobe Suite); and comfortable with supporting simple video production or multimedia content 2. Analytical Mindset Comfortable working with data (e.g. campaign metrics, traffic data, conversion funnels) to derive insights and recommend improvements. 3. Strong Communication & Interpersonal Skills Confident in engaging different stakeholders, comfortable speaking in group settings, and able to network professionally across agencies and vendors. 4. Strong ownership & Initiative Responsible, proactive and resourceful; willing to roll up your sleeves and support end-to-end marketing efforts, from planning to on-ground execution. 5. Interest in Product Marketing & Public Impact Keen interest in how technology products are positioned, launched and scaled to drive meaningful product adoption for public good.",
     "Work Location": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Business",
     "LevelTags": [
       "Undergraduate",
@@ -3676,7 +3486,7 @@
       "12 months"
     ],
     "LocationTags": [
-      "MOE Headquarters, Singapore (On-site; may include partner school visits)"
+      "MOE HQ (Balestier)"
     ]
   },
   {
@@ -3689,11 +3499,6 @@
     "Learning Outcomes from Project": "- Gain hands-on experience applying UX and service design methods to complex, real-world public sector systems. - Learn how discovery insights are translated into practical, buildable product designs. - Conduct user interviews, usability testing, and journey mapping with real operational users. - Design wireframes, interaction flows, and prototypes that simplify complex workflows. - Understand how UX decisions balance usability, policy constraints, and technical feasibility in government systems.",
     "Prerequisites": "- Familiarity with UX design fundamentals such as user research, wireframing, and prototyping. - Ability to clearly communicate design ideas through sketches, wireframes, or prototypes. - Strong curiosity about user behaviour and problem-solving in complex domains. - Comfortable collaborating with engineers, product managers, and stakeholders. - Experience with tools such as Figma/FigJam or usability testing methods.",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -3701,7 +3506,9 @@
     "DurationTags": [
       "3 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Skillsfuture Enterprise Credit v2",
@@ -3713,11 +3520,6 @@
     "Learning Outcomes from Project": "Skills You'll Develop • Designing for enterprise users and service providers with complex workflows • Understanding how policy objectives translate into user experience requirements • Working with multi-stakeholder systems and competing user needs • Creating interfaces that influence business decision-making • Collaborating on change management through design thinking",
     "Prerequisites": "Possesses training, or certification in service design, UX design, HCI, or related design fields Good knowledge in product design processes and emerging technologies Familiarity with design and prototyping tools, such as: Figma, and/or Adobe Creative Suite Knowledge of user research principles, methodologies, and deliverables",
     "Work Location (FormSG)": "Paya Lebar Quarter -PLQ 2 (S408533)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate",
@@ -3726,7 +3528,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "PLQ2"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : HDB Contact Centre",
@@ -3738,11 +3542,6 @@
     "Learning Outcomes from Project": "1. Gain experience designing for a real-world digital platform in an agile development environment. 2. Participate in facilitating UX research to evaluate designs and gather user feedback. 3. Gain insights into the process of modernising and digitalising public services. 4. Learn to collaborate effectively with engineers, product managers and business analysts to contribute to the successful delivery of the product.",
     "Prerequisites": "1. Familiarity with UI/UX principles, including user-centered design, prototyping, and usability testing. 2. Knowledge of interaction design principles. 3. Proficient in using Figma for designing and prototyping. 4. Collaborative mindset and enthusiasm for working with other designers and in cross-functional team.",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -3750,7 +3549,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Workpal",
@@ -3762,11 +3563,6 @@
     "Learning Outcomes from Project": "• Gain hands-on experience in different areas of UX, particularly in user research, interaction design, UX writing, and content strategy.\r\n\r\n• Participate in the planning and conducting of UX research activities such as user interviews, stakeholder workshops, and usability testing sessions. Learn how to translate research findings into actionable insights.\r\n\r\n• Experience creating design artefacts such as wireframes, information architecture diagrams, and more.",
     "Prerequisites": "• Passionate about UX.\r\n\r\n• Demonstrate understanding of user-centered design principles. Demonstrating knowledge in UX design processes is a plus.\r\n\r\n• Experience with at least one industry design tool e.g. Figma, Illustrator\r\n\r\n• Have strong work ethics, and is a self-motivated team player. Can work independently and with others.\r\n\r\n• Provide a design portfolio in addition to your resume. It should showcase the design projects that you have done, and it can be in any format (e.g., website, presentation deck)",
     "Work Location (FormSG)": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -3774,7 +3570,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Mapletree Business City"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Optical",
@@ -3786,11 +3584,6 @@
     "Learning Outcomes from Project": "Support design work on a platform that sits beneath Government Digital Products. Help out with making complex tools usable without turning users into accidental engineers, so teams can manage and deliver services to citizens. The role leans more towards systems thinking, platform UX, and designing workflows that just make sense.",
     "Prerequisites": "A UX design portfolio (format flexible)Comfortable working with ambiguity (sometimes we’re figuring things out together)Curious about AI-assisted workflows or experimental tools (like Lovable)",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Open to all levels"
@@ -3798,7 +3591,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Parents Gateway",
@@ -3810,11 +3605,6 @@
     "Learning Outcomes from Project": "1. Support and conduct user research\r\n2. Plan and run interviews or surveys, take notes, and help organise feedback into useful insights.\r\n3. Apply design principles in real projects\r\n4. Create mockups or prototypes using Figma and the design system, applying concepts like hierarchy, clarity and consistency.\r\n5. Understand how UX fits into product development\r\n6. Join team sprint ceremonies like standups, design reviews and sprint planning to see how design and product decisions come together.\r\n7. Collaborate in a cross-functional team\r\n8. Work with designers, developers and PMs, and participate in UX syncs like Design Clinics and Labs.\r\n9. Grow confidence in design and communication\r\n10. Get weekly check-ins with a UX mentor, and have opportunities to share work and learnings at team huddles.",
     "Prerequisites": "1. Familiar with Figma and able to create wireframes or prototypes using design components\r\n2. Able to support user research (e.g. planning, conducting sessions, note-taking, synthesising insights)\r\n3. Understands key design principles such as hierarchy, clarity, and consistency\r\n4. Has experience working on UX or design-related school projects\r\n5. Works independently and follows through on tasks",
     "Work Location (FormSG)": "Non-Headquarters MOE1 (S329927)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -3822,7 +3612,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "MOE1 (Balestier)"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : License Processing System (LPS)",
@@ -3834,11 +3626,6 @@
     "Learning Outcomes from Project": "1. Learn and apply Design Thinking methodology and Agile Development practices in a real-world government technology environment.\r\n\r\n2. Gain hands-on experience with industry-standard design tools including Figma.\r\n\r\n3. Acquire experience in requirements gathering, software testing and operational activities to enhance and maintain the systems.\r\n\r\n4. Build confidence working and collaborating with multiple stakeholders, including product managers, developers, and end users.",
     "Prerequisites": "1. Familiarity with at least one design tool (Figma, Sketch, Adobe XD, or similar)\r\n2. Basic understanding of user-centered design principles and design thinking methodology\r\n3. Ability to create wireframes, mockups, and basic prototypes\r\n4. You are highly motivated and aims for excellence in delivering practical and efficient solutions",
     "Work Location (FormSG)": "Non-Headquarter Service Centre MOM 2 (S339946)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Polytechnic"
@@ -3846,7 +3633,9 @@
     "DurationTags": [
       "12 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "MOM2 (Bendemeer)"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Student Learning Space (SLS)",
@@ -3858,11 +3647,6 @@
     "Learning Outcomes from Project": "Learning Outcomes from Project\r\n1. Gain hands-on experience in researching and designing a large-scale student learning platform used by many students and teachers across Singapore\r\n2. Develop an understanding of pedagogical considerations when designing learning experiences\r\n3. Learn how UX designers work within an agile product development squad, collaborating closely with curriculum experts, product managers and engineers\r\n4. Gain experience working with multiple stakeholders teams, aligning diverse perspectives towards a shared product vision",
     "Prerequisites": "1. A good understanding of UX design principles and user-centered design\r\n2. Visual design and interaction design skills\r\n3. Some experience with user research and synthesis\r\n4. Good communication and collaboration skills, with a willingness to learn and grow\r\n5. Illustration skills will be an advantage",
     "Work Location (FormSG)": "Non-Headquarters MOE1 (S329927)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -3870,7 +3654,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "MOE1 (Balestier)"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Enterprise Service Management Platform",
@@ -3882,11 +3668,6 @@
     "Learning Outcomes from Project": "Key Responsibilities: [Depending on your internship cycle] \r\nBe part of the team to: \r\n• Conduct user research and gather insights to inform the design process \r\n• Create wireframes, prototypes, and user flows to effectively communicate interaction and design ideas • Design intuitive and functional user interfaces for web and mobile applications \r\n• Iterate on designs based on user feedback, usability testing, and data analysis \r\n• Design logos, icons, and banners for ServiceNow products \r\n• Enhance the design library so as to improve efficiency of design creation for ServiceNow products \r\n• Explore how ServiceNow's AI tool can help enhance user experience",
     "Prerequisites": "- Pursuing a certificate (Degree or Diploma) in UX, computer science, information systems, or a related field \r\n- Some understanding of UI/UX design principles, with creative and analytical thinking skills to translate requirements with User Experience in mind for prototyping \r\n- Familiar with design tools such as Figma/Adobe XD, etc \r\n- Familiar with the agile methodology (e.g., Scrum) and human-centric methods (e.g., Design Thinking, Service Design, Systems Thinking, etc.) \r\n- Good communication and problem-solving skills, with an attention to detail",
     "Work Location (FormSG)": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -3894,7 +3675,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Mapletree Business City"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : DataHive",
@@ -3906,11 +3689,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience on UX research 2. Participate in end-to-end UX activities from research to design 3. Gain in-depth knowledge in visual design 4. Gain experience in product planning 5. Gain in-depth experience in crafting user-centric flows and UI",
     "Prerequisites": "1. Familiarity with user centered design 2. Familiarity with UX deliverables such as UT synthesis 3. Proficient in design tools such as Figma and Illustrator 4. Proficient in creating wireframes and mid-fidelity prototypes",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate",
@@ -3920,7 +3698,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Singpass Partner Experience",
@@ -3932,11 +3712,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience in user research, journey mapping, and problem discovery 2. Learn how to define problem spaces before designing solutions 3. Understand how large-scale digital platforms are designed and operated 4. Work closely with cross-functional teams across product, design, and operations",
     "Prerequisites": "- Background in UX/UI desin - Able to conduct desk research, take clear research notes and synthesise findings - Basic understanding of qualitative and quantitative research - Proficient in Figma and Google Workspace - Comfortable with learning research tools like Maze",
     "Work Location (FormSG)": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate",
@@ -3946,7 +3721,9 @@
     "DurationTags": [
       "3 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Mapletree Business City"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : LifeSG",
@@ -3958,11 +3735,6 @@
     "Learning Outcomes from Project": "1. Appreciate and understand the concept of iterative user-centric design\r\n2. Create user flows through wireframes, user interfaces and prototyping to different devices and requirements\r\n3. Learn to conduct effective usability testings and analyse data to learn about users, uncover problems and discover opportunities\r\n4. Achieve a deep understanding of the entire life-cycle of design — the process, purpose, and tools\r\n5. Learn about the different processes and best practices in Agile development",
     "Prerequisites": "1. Passionate about UI/UX and problem-solving with basic knowledge of user-centric design principals\r\n2. Familiar with using product and design tools (For e.g.: Figma, Sketch, Photoshop, Illustrator etc..)\r\n3. Fast learner who can adapt quickly to changes and work both independently and collaboratively\r\n4. Logical thinker with a good eye for visual design and hands on experience in user interface design\r\n5. Takes initiative, great team player, open to feedback and swift in picking up new concepts",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate",
@@ -3972,7 +3744,9 @@
     "DurationTags": [
       "12 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : AI + Digital Governance",
@@ -3984,11 +3758,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience with AI tools and platforms \r\n\r\n2. Gain exposure to digital governance \r\n\r\n3. Experience how to foster and sustain a culture of innovation, and support upskilling \r\n\r\n4. Improve presentation and communication skills when explaining technical concepts \r\n\r\n5. Enhance interpersonal skills through stakeholder interactions \r\n\r\nBy the end of this internship, the learning outcomes we hope to see would be your ability to demonstrate good understanding and practical application of responsible AI development, innovation leadership, good communication skills – this will help provide a good foundation for your future career opportunities.",
     "Prerequisites": "1. Familiar with AI tools, prompt engineering, and machine learning concepts. Willing to plan and execute events for AI upskilling\r\n\r\n2. Comfortable with Python fundamentals and front end development tools/Javascript \r\n\r\n3. Self-motivated with a hunger to learn and share knowledge \r\n\r\n4. An excellent communicator who thrives in collaborative environments \r\n\r\n5. A creative thinker who isn't afraid to challenge conventional approaches and propose fresh ideas. \r\n\r\n6. Multi-disciplinary background with double major or double degree in business/computer science/AI preferred.",
     "Work Location (FormSG)": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate",
@@ -3997,7 +3766,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Mapletree Business City"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Glow - AI-enabled Microlearning for MOE staff",
@@ -4009,11 +3780,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience designing intuitive UX/UI for both content creators and learners.\r\n2. Participate in the end-to-end product design lifecycle, from conducting user research with teachers & staff to delivering high-fidelity prototypes in Figma.\r\n3. Gain proficiency in building and maintaining a scalable design system that ensures visual consistency across the Glow ecosystem.\r\n4. Participate in design reviews to learn how to balance business, technical, and pedagogical requirements",
     "Prerequisites": "1. Design Proficiency: Strong interaction, visual design, and user-centered design skills.\r\n2. Product Thinking: Ability to simplify complex problems into intuitive user experiences.\r\n3. Technical Skills: Experience with design tools such as Figma, and familiarity with rapid prototyping tools like Figma Make, Lovable, v0 and the like.\r\n4. Collaboration: Strong communication skills and the ability to work effectively with diverse, cross-functional teams.",
     "Work Location (FormSG)": "MOE Buona Vista",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -4021,7 +3787,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "MOE (Buona Vista)"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Tradenet",
@@ -4033,11 +3801,6 @@
     "Learning Outcomes from Project": "1. You'll develop structured problem-solving skills. Learn how to simplify ambiguous, complex problems into usable designs\r\n\r\n2. Gain exposure to research and discovery work. Sit in on and support user research, journey mapping, and synthesis.\r\n\r\n3. Work and grow design system and interaction patterns. See how consistency and scalability are maintained in government platforms.\r\n\r\n4. Collaborate in a cross-functional environment. Observe and support how designers work with product managers, engineers, and business.",
     "Prerequisites": "1. Curiosity and willingness to learn, especially when faced with complex or unfamiliar domains\r\n2. Basic understanding of UX concepts (e.g., user journeys, wireframes, usability)\r\n3. Comfortable using Figma\r\n4. Good communication skills and openness to feedback",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Open to all levels"
@@ -4045,7 +3808,9 @@
     "DurationTags": [
       "3 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : GatherSG",
@@ -4057,11 +3822,6 @@
     "Learning Outcomes from Project": "1. Design for real-world complexity - Learn how to translate messy, evolving needs that differ from agency to agency into clear, usable interaction patterns and workflows.\r\n\r\n2. Practice platform and systems thinking - Design reusable components, patterns, and configurations that scale across multiple use cases, and potentially for other GatherSG products besides Ownself Gather.\r\n\r\n3. Influence a live product roadmap - Contribute design insights, research findings, and ideas that directly shape product priorities and future capabilities.\r\n\r\n4. Collaborate in a true product team - Work closely with product managers, engineers, and researchers through discovery, delivery, and iteration.\r\n\r\n5. Build portfolio-ready work with real impact - Ship designs that are used in production, with clear problem framing, constraints, and measurable outcomes.",
     "Prerequisites": "1. Have a foundation in design thinking and product / UIUX design (able to independently come up with UI designers, articulate design decisions well and work in a product team)\r\n2. Curious about systems and complexity - interested in designing beyond single screens, and comfortable working through ambiguous problems.\r\n2. Proficiency in Figma\r\n3. Knowledge of basic programming language or how developers work will be an advantage",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -4069,7 +3829,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Legacy Modernization Tooling",
@@ -4081,11 +3843,6 @@
     "Learning Outcomes from Project": "1. Conduct user research with developers, BAs, and members of modernization product teams. \r\n2. Uncover friction points in legacy reconstruction.\r\n3. Transform \"black box\" systems into clearer visualizations. Make dense technical data easy to scan.\r\n4. Build intuitive interfaces for AI assistants. Define how users interact with generated documentation.\r\n5. Validate prototypes with government agencies. Refine designs based on live pilot feedback.",
     "Prerequisites": "1. Past UX internship\r\n2. Interest in 0 to 1 products",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate",
@@ -4094,7 +3851,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Case Connect/ComLink+",
@@ -4106,11 +3865,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience working as a UX designer on real projects\r\n2. Learn to approach design challenges thoughtfully, with support from the team\r\n3. Build confidence in sharing your work and applying constructive feedback\r\n4. Strengthen your communication skills while collaborating with people from diverse backgrounds",
     "Prerequisites": "1. Care about creating user-friendly solutions and have knowledge in user-centered design. \r\n2. Know how to use Figma well for design and prototyping. \r\n3. Work well with others, are open to feedback, and learn quickly. \r\n4. Bonus but not necessary, if you are familiar with AI concepts and its potential applications in design.",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -4118,7 +3872,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Talent Track",
@@ -4130,11 +3886,6 @@
     "Learning Outcomes from Project": "* Support UX research projects from planning to delivery and analysis\r\n* Design and test new product enhancements and user flows",
     "Prerequisites": "* Strong aptitude to learn and grow as a UX designer\r\n* Can do and eager to learn",
     "Work Location (FormSG)": "Paya Lebar Quarter -PLQ 2 (S408533)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Open to all levels"
@@ -4142,7 +3893,9 @@
     "DurationTags": [
       "3 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "PLQ2"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : MCCY Discovery Team",
@@ -4154,11 +3907,6 @@
     "Learning Outcomes from Project": "1. Gain experience working and interfacing with senior executives and product owners to define a product's vision and strategy\r\n2. Conduct workshops, focus groups, and 1:1 interviews with citizens and MCCY stakeholders to uncover pain points, insights, and opportunities that will directly impact the product's design and strategy\r\n3. Learn how to translate these insights into tangible designs, creating prototypes to validate and test with end users\r\n4. Learn the various techniques and methods to translate ambiguous and complex problem spaces into clear, established product directions validated by citizens and end-users\r\n5. Gain mentorship on technical design skills (eg. Figma workflows) and design portfolio",
     "Prerequisites": "- Have a design portfolio with 1-2 projects that showcase a strong understanding and application of the design process\r\n- Interest in UX research and design strategy\r\n- Working knowledge of Figma, FigJam and other design tools like Adobe CC\r\n- Able to present work clearly and confidently",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate",
@@ -4167,7 +3915,9 @@
     "DurationTags": [
       "3 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : WINS Workpass Integrated System",
@@ -4179,11 +3929,6 @@
     "Learning Outcomes from Project": "1. Experience the full product design lifecycle, learning how to take a project from early user research and problem definition all the way to final high-fidelity visuals.\r\n\r\n2. Master practical prototyping and testing, gaining hands-on experience using industry tools to build interactive prototypes and conduct usability tests to validate that your solutions actually work for users.\r\n\r\n3. Craft components in a growing Design System; learn how to create and manage reusable interface components, understanding how design teams maintain consistency and efficiency across large products.\r\n\r\n4. Collaborate in a real-world tech team: Work with Product Owners, Business Analysts, and Software Engineers to understand how designers collaborate cross-functionally with other tech professionals.",
     "Prerequisites": "1. Demonstrate competency with UX design process\r\n2. Proficiency with Figma and other similar design software\r\n3. Growth mindset and good learning attitude",
     "Work Location (FormSG)": "Non-Headquarters MOM 1 (S059764)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate",
@@ -4192,7 +3937,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "MOM1 (Havelock)"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : UX Design & Research for Records Management",
@@ -4204,11 +3951,6 @@
     "Learning Outcomes from Project": "1. UX Experience: Experience of improve a corporate intranet page to a user-centric CIO Office site. 2. GenAI Proficiency: Practical experience using generation and synthesis tools in a corporate environment for development of digital training materials. 3. Information Governance: A deep understanding of Records Management and data lifecycle protocols within a large organization. 4. Stakeholder Management: The ability to translate technical requirements into user-friendly interfaces and communications.",
     "Prerequisites": "Technical Skills • UX/UI Design: Familiarity with design tools (e.g., Figma, Adobe XD, or Sketch) and an understanding of Information Architecture. • Digital Content Creation: Interest or experience in video editing; experience with GenAI tools is a significant plus. • Collab spaces: Familiarity with collaboration spaces, document repositories will be a bonus Soft Skills • Analytical Mindset: You enjoy finding \"the better way\" to do things and don't mind diving into the details of filing systems. • Communication: Strong writing skills for drafting guides and communicating with stakeholders. • Self-Starter: The ability to work independently on research tasks and take ownership of the video production lifecycle.",
     "Work Location (FormSG)": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -4216,7 +3958,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Mapletree Business City"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : LangBuddy",
@@ -4228,11 +3972,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on experience in applying user-centered design principles to a real-world digital product used by students. 2. Learn how to conduct basic UX research activities such as user interviews, usability testing, and feedback analysis. 3. Develop skills in creating UX artefacts, including user journeys, wireframes, and simple prototypes. 4. Collaborate closely with product managers and engineers to translate user insights into meaningful design solutions. 5. Understand how UX design decisions are made, tested, and refined within an agile, cross-functional team.",
     "Prerequisites": "1. Interest in UX design, human centered design, or how people interact with digital products. 2. Basic familiarity with design tools or methods (e.g. Figma, wireframing, user flows, or school design projects). 3. Good communication skills and willingness to share ideas, designs and feedback with the team. 4. Empathy for users and curiosity about understanding user needs and pain points.",
     "Work Location (FormSG)": "Non-Headquarters MOE1 (S329927)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Open to all levels"
@@ -4240,7 +3979,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "MOE1 (Balestier)"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : CIOO A&P",
@@ -4252,11 +3993,6 @@
     "Learning Outcomes from Project": "1. Solve problems, not just design screens - Understand user needs and business constraints, clarify requirements with stakeholders, and propose end-to-end solutions (include process/ policy considerations when needed). 2. Design usable, thoughtful experiences - Create flows and interfaces that are intuitive and easy to use (e.g., forms/ workflows, dashboards, Slack-based interactions, internal tools), and ensure designs are practical implement. 3. Work in small and agile development squads - Collaborate day-to-day with a tight team (typically 2 - 4 people) to ship increments quickly. 4. Own a scoped workstream - Take responsibility for a defined problem area (e.g., a feature flow, an MVP module, usability fixes), plan your approach, and drive it from discovery → design →validation. 5. Prototype, test, iterate - Build rapid prototypes (low - to high-fidelity), run lightweight user testing, and refine based on feedback and data. 6. Operate in a fast-changing environment - Be comfortable with ambiguity, shifting constraints, and iterative decisions; communicate trade-offs clearly.",
     "Prerequisites": "1. Portfolio showing interactions/ UI thinking and problem-solving (we’re looking for the “why” behind decisions, not just artifacts). 2. Ability to use research and data to support design recommendations. 3. Familiarity with responsive/ mobile patterns and tools like Figma, Miro, Sketch (or similar)",
     "Work Location (FormSG)": "Mapletree Business City, Block 10, Level 10 (S117438)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -4264,7 +4000,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Mapletree Business City"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : GoWhere",
@@ -4276,11 +4014,6 @@
     "Learning Outcomes from Project": "-Learn how to design intuitive, location-based digital experiences (maps, search, filters, listing pages). -Gain experience translating policy and campaign requirements into clear, citizen-friendly UI/UX flows. -Understand accessibility, responsive design and usability best practices for high-traffic public services. -Develop skills in working closely with engineers and product managers to iterate designs based on data and user feedback",
     "Prerequisites": "- Basic proficiency in UI/UX design tools (e.g., Figma, or similar) and understanding of design systems. -Strong grasp of user experience principles, information architecture and responsive web design. -Awareness of accessibility standards and inclusive design practices. -Good communication skills and ability to collaborate with engineers and product managers in an agile environment.",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Open to all levels"
@@ -4288,7 +4021,9 @@
     "DurationTags": [
       "12 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Usability & Accessibility",
@@ -4300,11 +4035,6 @@
     "Learning Outcomes from Project": "Gain hands-on experience supporting accessibility and usability research activities, including planning studies, facilitating sessions, and synthesising insights into clear UX recommendations. Learn how to design inclusive user experiences by applying accessibility principles (WCAG, inclusive design patterns) to real government digital services. Develop practical skills in creating UX artefacts such as wireframes, content structures, and educational resources that support \"shift-left\" adoption. Build confidence collaborating with product managers, designers, and developers to translate research findings into actionable design improvements. Understand how inclusive design is integrated across the product lifecycle, from early discovery and prototyping to evaluation and iteration.",
     "Prerequisites": "Familiarity with design and collaboration tools such as Figma and Figjam. Ability to communicate ideas clearly through writing, visuals, or presentations, and willingness to work in a multidisciplinary team. Interest in inclusive design, accessibility, or improving public sector digital services, with a mindset for continuous learning. Prior exposure to accessibility guidelines (e.g. WCAG), usability testing, or front-end design practices is a bonus but not required.",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -4312,7 +4042,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Training Allowance System (TAS)",
@@ -4324,11 +4056,6 @@
     "Learning Outcomes from Project": "1. Contribute to service journey re-designs to transform public service and improve the user experience for members of public 2. Exposure to product roadmaps, feature prioritisation, and business metrics to understand how design decisions impact business outcomes 3. Develop skills in stakeholder management, from communicating design rationale and building consensus around design decisions 4. Gain hands-on experience working with cross functional teams and tackling real world problems, such as managing deadlines, priorities, constraints and consequences",
     "Prerequisites": "1. Understanding of service design fundamentals, user journey mapping, service blueprinting, and human-centred design principles 2. Proficiency in one or more design, prototyping and mapping tools such as Figma, Sketch, Adobe XD, InVision, Miro, Visio etc. 3. Comfortable with visual presentation and working with cross-functional teams",
     "Work Location (FormSG)": "Paya Lebar Quarter -PLQ 2 (S408533)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Open to all levels"
@@ -4336,7 +4063,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "PLQ2"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : EduPass",
@@ -4348,11 +4077,6 @@
     "Learning Outcomes from Project": "By the end of the internship, the intern will:\r\n\r\n1. Apply UX and service design principles across at least two EduPass products\r\n2. Create mockups and prototypes using Figma\r\n3. Practise critical and systems thinking across multiple MOE applications\r\n4. Design components and patterns aligned with the MOE Design System\r\n5. Conduct contextual inquiry in schools (e.g., observing student facial-recognition login)\r\n6. Understand how UX fits into product delivery and platform strategy\r\n7. Collaborate with product managers and engineers in cross-functional teams\r\n8. Participate in sprint ceremonies (standups, planning, reviews, retros)\r\n9. Join UX capability and networking sessions (Design Clinics, Design Labs, Design Studios)\r\n10. Build confidence presenting design rationale and handling trade-offs\r\n11. Receive weekly mentorship and share work at team huddles",
     "Prerequisites": "1. Strong interest in understanding underserved user groups, with empathy and curiosity to uncover real pain points\r\n2. Familiar with UX research and design principles\r\n3. Able to create prototypes using Figma\r\n4. Comfortable facilitating discussions in both in-person and virtual settings\r\n5. Good working knowledge of UX writing\r\n6. Able to clearly articulate and defend design rationale\r\n7. Motivated by complex problem spaces",
     "Work Location (FormSG)": "Non-Headquarters MOE1 (S329927)",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -4360,7 +4084,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "MOE1 (Balestier)"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : PA Community App",
@@ -4372,11 +4098,6 @@
     "Learning Outcomes from Project": "1. Applying UX Process End-to-End\r\nGained hands-on experience in executing the full UX process—from research and problem definition to wireframing, prototyping, and usability testing.\r\n\r\n2. Translating Research into Design Decisions\r\nLearned how to synthesize user insights and convert findings into actionable design improvements aligned with user needs and business goals.\r\n\r\n3. Cross-Functional Collaboration\r\nDeveloped skills in working with product managers and developers, understanding constraints, and communicating design rationale clearly.\r\n\r\n4. Iterative Design & Feedback Integration\r\nUnderstood the importance of iteration by incorporating stakeholder and user feedback to refine solutions.\r\n\r\n5. Time Management in Agile Environment\r\nImproved ability to prioritize tasks and deliver design outputs within sprint timelines.",
     "Prerequisites": "1. Figma Proficiency\r\nBasic ability to create wireframes, components, auto-layout, and simple interactive prototypes.\r\n\r\n2. Understanding of UX Fundamentals\r\nKnowledge of user-centered design principles, usability heuristics, and basic research methods.\r\n\r\n3. Basic User Research Awareness\r\nFamiliarity with interviews, surveys, or usability testing concepts (even at academic level).\r\n\r\n4. Communication & Collaboration Skills\r\nAbility to articulate design decisions clearly and work within a cross-functional team.",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -4384,7 +4105,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Console",
@@ -4396,11 +4119,6 @@
     "Learning Outcomes from Project": "1. Gain hands-on research experience 2. Participate in end-to-end UX processes 3. Gain experience in designing and creating hi-fidelity designs and flows 4. Gain in-depth knowledge in visual design",
     "Prerequisites": "1. Clear understanding of user centered design 2. Familiar with UX deliverables such as personas, user journeys, wireframes, usability testing and visual design 3. Proficient in design tools such as Figma",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate",
@@ -4410,7 +4128,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Designer (UX) : Service Designer",
@@ -4422,11 +4142,6 @@
     "Learning Outcomes from Project": "By the end of the internship, you will be able to plan and conduct user research within institutional settings and synthesise findings into actionable insights, produce design artefacts including journey maps, service blueprints, wireframes, and prototypes using Figma, communicate design decisions and rationale clearly to non-design stakeholders, apply service design methods within the constraints of real government projects, and understand how design fits into the broader product and delivery process in a public sector context.",
     "Prerequisites": "NA",
     "Work Location (FormSG)": "Punggol Digital District",
-    "__EMPTY": "",
-    "__EMPTY_1": "",
-    "__EMPTY_2": "",
-    "__EMPTY_3": "",
-    "__EMPTY_4": "",
     "Category": "Designer (UX)",
     "LevelTags": [
       "Undergraduate"
@@ -4434,7 +4149,9 @@
     "DurationTags": [
       "6 months"
     ],
-    "LocationTags": []
+    "LocationTags": [
+      "Punggol Digital District"
+    ]
   },
   {
     "Role": "Tech – Cybersecurity Engineer : AI powered Cloud Security Platform",
