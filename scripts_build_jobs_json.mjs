@@ -94,7 +94,7 @@ const LOCATION_RULES = [
 
   { includes: 'MOE Buona Vista', mapping: 'MOE (Buona Vista)' },
   { includes: 'MOE HQ (Balestier)', mapping: 'MOE HQ (Balestier)' },
-  { includes: 'MOE Headquarters', mapping: 'MOE (Balestier)' },
+  { includes: 'MOE Headquarters', mapping: 'MOE HQ (Balestier)' },
   { includes: 'S329927', mapping: 'MOE1 (Balestier)' },
   { includes: 'Non-Headquarters MOE1', mapping: 'MOE1 (Balestier)' },
   { includes: 'Non-HQ MOE1', mapping: 'MOE1 (Balestier)' },
